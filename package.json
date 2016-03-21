@@ -1,0 +1,39 @@
+{
+  "name": "CantaHealth",
+  "version": "1.0.0",
+  "description": "CantaHealth FHIR API",
+  "main": "api.es6",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node.js",
+    "Javascript",
+    "Express"
+  ],
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "method-override": "^2.3.5",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "6.4.5",
+    "babel-eslint": "^4.1.3",
+    "babel-preset-es2015": "6.3.13",
+    "grunt": "0.4.5",
+    "grunt-babel": "^6.0.0",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-eslint": "^17.1.0",
+    "grunt-jscs": "^2.0.0",
+    "grunt-shell": "1.1.1"
+  },
+  "author": "Shakti",
+  "license": "ISC"
+}
