@@ -25,7 +25,7 @@
 
     "comma-dangle": 2,                          // - disallow or enforce trailing commas (recommended)
     "no-cond-assign": 2,                        // - disallow assignment in conditional expressions (recommended)
-    //"no-console": 2,                            // - disallow use of console in the node environment (recommended)
+    // "no-console": 2,                            // - disallow use of console in the node environment (recommended)
     "no-constant-condition": 2,                 // - disallow use of constant expressions in conditions (recommended)
     "no-control-regex": 2,                      // - disallow control characters in regular expressions (recommended)
     "no-debugger": 2,                           // - disallow use of debugger (recommended)
@@ -92,7 +92,7 @@
     "no-octal-escape": 2,                       // - disallow use of octal escape sequences in string literals, such as var foo = "Copyright \251";
     "no-octal": 2,                              // - disallow use of octal literals (recommended)
     "no-param-reassign": 2,                     // - disallow reassignment of function parameters
-    //"no-process-env": 2,                        // - disallow use of process.env
+    // "no-process-env": 2,                        // - disallow use of process.env
     "no-proto": 2,                              // - disallow usage of __proto__ property
     "no-redeclare": 2,                          // - disallow declaring the same variable more than once (recommended)
     "no-return-assign": 2,                      // - disallow use of assignment in return statement
@@ -165,7 +165,11 @@
       }
     ],                                          // - this option enforces minimum and maximum identifier lengths (variable names, property names etc.) (off by default)
     "id-match": 0,                              // - require identifiers to match the provided regular expression
-    "indent": [2, 2],                           // - specify tab or space width for your code
+    "indent": [2, 2,                            // - specify tab or space width for your code
+      {
+        "SwitchCase": 1
+      }
+    ],
     "key-spacing": 2,                           // - enforce spacing between keys and values in object literal properties
     "lines-around-comment": [2,
       {

@@ -30,17 +30,18 @@ var environmentVariables = require("./environmentVariables"),
     "fhirValidator": {
       "baseURI": {
         "protocol": "http",
-        "domain": "127.0.0.1",
+        "domain": "10.18.6.110",
         "port": 8080,
-        "version": "dstu2"
+        "version": "baseDstu2"
       }
     },
     "logger": {
       name: "ch-fhir-api",
+      level: environmentVariables.FHIR_LOGGING_LEVEL,
       "streams": [
         {
-          level: environmentVariables.FHIR_LOGGING_LEVEL,
-          console: true
+          "path": "/var/log/fhir",
+          "console": true
         }
       ]
     },
