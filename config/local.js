@@ -38,10 +38,10 @@ var environmentVariables = require("./environmentVariables"),
     "logger": {
       name: "ch-fhir-api",
       level: environmentVariables.FHIR_LOGGING_LEVEL,
+      "console": true,
       "streams": [
         {
-          "path": "/var/log/fhir",
-          "console": true
+          "path": "/var/log/fhir"
         }
       ]
     },
