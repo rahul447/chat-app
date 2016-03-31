@@ -45,13 +45,13 @@ export class ServiceMapperMaster {
         console.log("reusable\\ServiceMapperMaster.es6:processCudRequest Request with id " +
           args.requestId + " has been successfully processed");
         args.res.status(202).send(msg);
-      }, (err, id) => {
+      }, err => {
         args.res.status(400).send({"error": err});
       }).done();
   }
 
   processRetrieveRequest(args) {
-    console.log("Inside mapper master");
+    console.log("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
 
     args.service.retrieve(args)
       .then(msg => {

@@ -9,7 +9,11 @@ let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
   config = Object.freeze(require("../../../config/" + nodeEnv)),
   chFhirServiceInstance = getChFhirServiceInstance(
-    config.logger, config.mongoDb, config.rabbitMQ, config.fhirValidator),
+    config.logger,
+    config.mongoDb,
+    config.rabbitMQ,
+    config.fhirValidator
+  ),
   uniqueIdService = chFhirServiceInstance.uniqueIdService,
   serviceInstance = chFhirServiceInstance.serviceInstance,
   events = chFhirServiceInstance.events,
@@ -17,10 +21,11 @@ let {NODE_ENV} = process.env,
   serviceMapperMasterIns = new ServiceMapperMaster(urlBase),
   serviceMapperInstance = new ServiceMapper(serviceInstance, events, uniqueIdService, serviceMapperMasterIns),
   router = express.Router(),
-  practitionerRootRoute = router.route("/");
+  practitionerRootRoute = router.route("/"),
+  practitionerParamRoute = router.route("/:id");
 
-router
-  .get("/:id", serviceMapperInstance.retrievePractitioner.bind(serviceMapperInstance));
+practitionerParamRoute
+  .get(serviceMapperInstance.retrievePractitioner.bind(serviceMapperInstance));
 
 practitionerRootRoute
   .post(serviceMapperInstance.createPractitioner.bind(serviceMapperInstance));
