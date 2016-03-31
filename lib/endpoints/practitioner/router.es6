@@ -4,7 +4,7 @@ import express from "express";
 import {getChFhirServiceInstance} from "ch-fhir-services";
 import {ServiceMapper} from "./ServiceMapper";
 import {ServiceMapperMaster} from "../../reusable/ServiceMapperMaster";
-import {getLoggerInstance} from "ch-logger";
+import loggInstance from "../../util/FhirApiLogger";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -19,9 +19,7 @@ let {NODE_ENV} = process.env,
   serviceInstance = chFhirServiceInstance.serviceInstance,
   events = chFhirServiceInstance.events,
   urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/practitioner`,
-  loggerInstance = getLoggerInstance("ch-fhir-api", {
-    "console": config.logger.console
-  }),
+  loggerInstance = loggInstance,
   serviceMapperMasterIns = new ServiceMapperMaster(urlBase, loggerInstance),
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
