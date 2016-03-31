@@ -8,6 +8,7 @@ import mwAllowCrossDomain from "./middleware_services/mwAllowCrossDomain";
 import mwErrorHandler from "./middleware_services/mwErrorHandler";
 import checkEnvironmentVariables from "./util/checkEnvironmentVariables";
 import practitioner from "./endpoints/practitioner/router";
+import patient from "./endpoints/patient/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -36,6 +37,7 @@ app.use(session({
 app.use(mwAllowCrossDomain);
 app.use(bodyParser.json());
 app.use(urlPrefix + "/practitioner", practitioner);
+app.use(urlPrefix + "/patient", patient);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
