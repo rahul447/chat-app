@@ -22,6 +22,8 @@ import procedure from "./endpoints/procedure/router";
 import dataElement from "./endpoints/dataElement/router";
 import questionnaire from "./endpoints/questionnaire/router";
 import imagingStudy from "./endpoints/imagingStudy/router";
+import mwAddrequestId from "./middleware_services/mwAddRequestId";
+import mwIdValidation from "./middleware_services/mwIdValidation";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -47,8 +49,10 @@ app.use(session({
 }));
 
 // Defines top middleware and routes
-app.use(mwAllowCrossDomain);
 app.use(bodyParser.json());
+app.use(mwIdValidation);
+app.use(mwAllowCrossDomain);
+app.use(mwAddrequestId);
 app.use(urlPrefix + "/practitioner", practitioner);
 app.use(urlPrefix + "/patient", patient);
 app.use(urlPrefix + "/organization", organization);
