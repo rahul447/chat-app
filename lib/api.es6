@@ -15,6 +15,7 @@ import healthcareService from "./endpoints/healthcareService/router";
 import group from "./endpoints/group/router";
 import location from "./endpoints/location/router";
 import person from "./endpoints/person/router";
+import observation from "./endpoints/observation/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -50,6 +51,7 @@ app.use(urlPrefix + "/healthcareService", healthcareService);
 app.use(urlPrefix + "/group", group);
 app.use(urlPrefix + "/location", location);
 app.use(urlPrefix + "/person", person);
+app.use(urlPrefix + "/observation", observation);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
