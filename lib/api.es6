@@ -10,6 +10,7 @@ import checkEnvironmentVariables from "./util/checkEnvironmentVariables";
 import practitioner from "./endpoints/practitioner/router";
 import patient from "./endpoints/patient/router";
 import organization from "./endpoints/organization/router";
+import relatedPerson from "./endpoints/relatedPerson/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -40,6 +41,7 @@ app.use(bodyParser.json());
 app.use(urlPrefix + "/practitioner", practitioner);
 app.use(urlPrefix + "/patient", patient);
 app.use(urlPrefix + "/organization", organization);
+app.use(urlPrefix + "/relatedPerson", relatedPerson);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
