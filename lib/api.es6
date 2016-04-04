@@ -6,6 +6,8 @@ import bodyParser from "body-parser";
 import methodOverride from "method-override";
 import mwAllowCrossDomain from "./middleware_services/mwAllowCrossDomain";
 import mwErrorHandler from "./middleware_services/mwErrorHandler";
+import mwAddrequestId from "./middleware_services/mwAddRequestId";
+import mwIdValidation from "./middleware_services/mwIdValidation";
 import checkEnvironmentVariables from "./util/checkEnvironmentVariables";
 import practitioner from "./endpoints/practitioner/router";
 import patient from "./endpoints/patient/router";
@@ -47,8 +49,10 @@ app.use(session({
 }));
 
 // Defines top middleware and routes
-app.use(mwAllowCrossDomain);
 app.use(bodyParser.json());
+app.use(mwIdValidation);
+app.use(mwAllowCrossDomain);
+app.use(mwAddrequestId);
 app.use(urlPrefix + "/practitioner", practitioner);
 app.use(urlPrefix + "/patient", patient);
 app.use(urlPrefix + "/organization", organization);

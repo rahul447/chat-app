@@ -38,14 +38,14 @@ export class ServiceMapperMaster {
       "payload": args.req.body,
       "entityIds": entityIds,
       "resourceUri": resourceUri,
-      "requestId": args.uniqueId  // temporary -- will embedd the requestID in req using middleware
+      "requestId": args.req.id
     })
       .then(msg => {
         this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processCudRequest Request with id " +
-          args.requestId + " has been successfully processed");
-        args.res.status(202).send(msg);
+          args.req.id + " has been successfully processed");
+        args.res.status(msg.statusCode).send(msg);
       }, err => {
-        args.res.status(400).send({"error": err});
+        args.res.status(err.statusCode).send({"error": err});
       }).done();
   }
 
