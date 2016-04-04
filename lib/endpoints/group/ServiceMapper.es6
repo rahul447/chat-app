@@ -15,7 +15,7 @@ export class ServiceMapper {
     console.log("========= Create Group ===========");
     this.mapperMaster.processCudRequest({
       "service": this.serviceInstance,
-      "event": this.events.fhirResources.organization.create,
+      "event": this.events.fhirResources.group.create,
       "uniqueId": this.uniqueIdService.createUniqueId(),
       "req": req,
       "res": res,

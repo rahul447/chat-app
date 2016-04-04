@@ -15,7 +15,7 @@ export class ServiceMapper {
     console.log("========= Create RelatedPerson ===========");
     this.mapperMaster.processCudRequest({
       "service": this.serviceInstance,
-      "event": this.events.fhirResources.organization.create,
+      "event": this.events.fhirResources.relatedPerson.create,
       "uniqueId": this.uniqueIdService.createUniqueId(),
       "req": req,
       "res": res,
