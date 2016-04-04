@@ -2,13 +2,13 @@
 
 export class ServiceMapper {
 
-  constructor(serviceInstance, events, uniqueIdService, mapperMaster) {
+  constructor(serviceInstance, events, uniqueIdService, mapperMaster, loggerInstance) {
 
     this.serviceInstance = serviceInstance;
     this.events = events;
     this.uniqueIdService = uniqueIdService;
     this.mapperMaster = mapperMaster;
-
+    this.loggerInstance = loggerInstance;
   }
 
   createPractitioner(req, res, next) {

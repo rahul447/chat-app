@@ -2,9 +2,10 @@
 
 export class ServiceMapperMaster {
 
-  constructor(urlBase) {
+  constructor(urlBase, loggerInstance) {
 
     this.urlBase = urlBase;
+    this.loggerInstance = loggerInstance;
 
   }
 
@@ -20,8 +21,6 @@ export class ServiceMapperMaster {
   }
 
   processCudRequest(args) {
-    console.log(args.service);
-
     let entityIds,
       resourceUri = this.urlBase + args.req.originalUrl.substring(0);
 
@@ -42,7 +41,7 @@ export class ServiceMapperMaster {
       "requestId": args.uniqueId  // temporary -- will embedd the requestID in req using middleware
     })
       .then(msg => {
-        console.log("reusable\\ServiceMapperMaster.es6:processCudRequest Request with id " +
+        this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processCudRequest Request with id " +
           args.requestId + " has been successfully processed");
         args.res.status(202).send(msg);
       }, err => {
@@ -51,8 +50,7 @@ export class ServiceMapperMaster {
   }
 
   processRetrieveRequest(args) {
-    console.log("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
-
+    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
     args.service.retrieve(args)
       .then(msg => {
         args.res.status(200).send(msg);
