@@ -6,6 +6,8 @@ import bodyParser from "body-parser";
 import methodOverride from "method-override";
 import mwAllowCrossDomain from "./middleware_services/mwAllowCrossDomain";
 import mwErrorHandler from "./middleware_services/mwErrorHandler";
+import mwAddrequestId from "./middleware_services/mwAddRequestId";
+import mwIdValidation from "./middleware_services/mwIdValidation";
 import checkEnvironmentVariables from "./util/checkEnvironmentVariables";
 import practitioner from "./endpoints/practitioner/router";
 import patient from "./endpoints/patient/router";
@@ -22,8 +24,6 @@ import procedure from "./endpoints/procedure/router";
 import dataElement from "./endpoints/dataElement/router";
 import questionnaire from "./endpoints/questionnaire/router";
 import imagingStudy from "./endpoints/imagingStudy/router";
-import mwAddrequestId from "./middleware_services/mwAddRequestId";
-import mwIdValidation from "./middleware_services/mwIdValidation";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
