@@ -10,10 +10,10 @@ var environmentVariables = require("./environmentVariables"),
       "port": 8050
     },
     "rabbitMQ": {
-      "url": "amqp://localhost",
-      "appname": "Rabbit Test",
+      "url": environmentVariables.rabbitMQUrl,
+      "appname": "ch-fhir-api",
       "timeout": 10000,
-      "queueName": "ch-fhir-api"
+      "queueName": "RabbitTest"
     },
     "mongoDb": {
       "connectionString": environmentVariables.FHIR_MONGO_CONNECTION_STRING,
