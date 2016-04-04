@@ -10,6 +10,17 @@ import checkEnvironmentVariables from "./util/checkEnvironmentVariables";
 import practitioner from "./endpoints/practitioner/router";
 import patient from "./endpoints/patient/router";
 import organization from "./endpoints/organization/router";
+import relatedPerson from "./endpoints/relatedPerson/router";
+import healthcareService from "./endpoints/healthcareService/router";
+import group from "./endpoints/group/router";
+import location from "./endpoints/location/router";
+import person from "./endpoints/person/router";
+import observation from "./endpoints/observation/router";
+import condition from "./endpoints/condition/router";
+import encounter from "./endpoints/encounter/router";
+import procedure from "./endpoints/procedure/router";
+import dataElement from "./endpoints/dataElement/router";
+import questionnaire from "./endpoints/questionnaire/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -40,6 +51,17 @@ app.use(bodyParser.json());
 app.use(urlPrefix + "/practitioner", practitioner);
 app.use(urlPrefix + "/patient", patient);
 app.use(urlPrefix + "/organization", organization);
+app.use(urlPrefix + "/relatedPerson", relatedPerson);
+app.use(urlPrefix + "/healthcareService", healthcareService);
+app.use(urlPrefix + "/group", group);
+app.use(urlPrefix + "/location", location);
+app.use(urlPrefix + "/person", person);
+app.use(urlPrefix + "/observation", observation);
+app.use(urlPrefix + "/condition", condition);
+app.use(urlPrefix + "/encounter", encounter);
+app.use(urlPrefix + "/procedure", procedure);
+app.use(urlPrefix + "/dataElement", dataElement);
+app.use(urlPrefix + "/questionnaire", questionnaire);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
