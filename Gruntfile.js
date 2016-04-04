@@ -73,14 +73,14 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-eslint");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.loadNpmTasks("grunt-mocha-test");
+  // grunt.loadNpmTasks("grunt-mocha-test");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-jscs");
 
   // Default task.
   grunt.registerTask("default", [
-    "buildCommon",
-    "testCommon"
+    "buildCommon"
+    // "testCommon"
   ]);
 
   // Common build task
