@@ -21,6 +21,7 @@ import encounter from "./endpoints/encounter/router";
 import procedure from "./endpoints/procedure/router";
 import dataElement from "./endpoints/dataElement/router";
 import questionnaire from "./endpoints/questionnaire/router";
+import imagingStudy from "./endpoints/imagingStudy/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -62,6 +63,7 @@ app.use(urlPrefix + "/encounter", encounter);
 app.use(urlPrefix + "/procedure", procedure);
 app.use(urlPrefix + "/dataElement", dataElement);
 app.use(urlPrefix + "/questionnaire", questionnaire);
+app.use(urlPrefix + "/imagingStudy", imagingStudy);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
