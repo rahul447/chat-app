@@ -18,6 +18,7 @@ import person from "./endpoints/person/router";
 import observation from "./endpoints/observation/router";
 import condition from "./endpoints/condition/router";
 import encounter from "./endpoints/encounter/router";
+import procedure from "./endpoints/procedure/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -56,6 +57,7 @@ app.use(urlPrefix + "/person", person);
 app.use(urlPrefix + "/observation", observation);
 app.use(urlPrefix + "/condition", condition);
 app.use(urlPrefix + "/encounter", encounter);
+app.use(urlPrefix + "/procedure", procedure);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
