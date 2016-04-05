@@ -22,6 +22,7 @@ export class ServiceMapperMaster {
 
   processCudRequest(args) {
     let entityIds,
+      validMsg = {},
       resourceUri = this.urlBase + args.req.originalUrl.substring(0);
 
     resourceUri = resourceUri.replace(/\/+$/, "");
@@ -43,7 +44,10 @@ export class ServiceMapperMaster {
       .then(msg => {
         this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processCudRequest Request with id " +
           args.req.id + " has been successfully processed");
-        args.res.status(msg.statusCode).send(msg);
+        validMsg.entityId = entityIds.id;
+        validMsg.requestId = args.req.id;
+        validMsg.msg = msg;
+        args.res.status(msg.statusCode).send(validMsg);
       }, err => {
         args.res.status(err.statusCode).send({"error": err});
       }).done();
