@@ -42,6 +42,7 @@
     "grunt-jscs": "^2.0.0",
     "grunt-mocha-test": "^0.12.7",
     "mocha": "^2.2.5",
-    "sinon": "^1.14.1"
+    "sinon": "^1.14.1",
+    "node-uuid": "^1.4.7"
   }
 }
