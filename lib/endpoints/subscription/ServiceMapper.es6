@@ -24,7 +24,7 @@ export class ServiceMapper {
 
   }
 
-  retrieSubscription(req, res, next) {
+  retrieveSubscription(req, res, next) {
     console.log("========= Retrieve Subscription ===========");
     console.log(req.params);
     let obj = {

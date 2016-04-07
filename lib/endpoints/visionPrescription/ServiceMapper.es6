@@ -24,7 +24,7 @@ export class ServiceMapper {
 
   }
 
-  retrieVisionPrescription(req, res, next) {
+  retrieveVisionPrescription(req, res, next) {
     console.log("========= Retrieve VisionPrescription ===========");
     console.log(req.params);
     let obj = {

@@ -24,7 +24,7 @@ export class ServiceMapper {
 
   }
 
-  retrieMedia(req, res, next) {
+  retrieveMedia(req, res, next) {
     console.log("========= Retrieve Media ===========");
     console.log(req.params);
     let obj = {

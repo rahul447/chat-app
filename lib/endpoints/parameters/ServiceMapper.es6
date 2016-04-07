@@ -24,7 +24,7 @@ export class ServiceMapper {
 
   }
 
-  retrieParameters(req, res, next) {
+  retrieveParameters(req, res, next) {
     console.log("========= Retrieve Parameters ===========");
     console.log(req.params);
     let obj = {
