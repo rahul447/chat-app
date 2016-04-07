@@ -20,7 +20,7 @@ let {NODE_ENV} = process.env,
   events = chFhirServiceInstance.events,
   urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/searchParameter`,
   loggerInstance = loggInstance,
-  serviceMapperMasterIns = new ServiceMapperMaster(urlBase,loggerInstance),
+  serviceMapperMasterIns = new ServiceMapperMaster(urlBase, loggerInstance),
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),

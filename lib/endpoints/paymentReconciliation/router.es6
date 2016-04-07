@@ -20,17 +20,17 @@ let {NODE_ENV} = process.env,
   events = chFhirServiceInstance.events,
   urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/paymentReconciliation`,
   loggerInstance = loggInstance,
-  serviceMapperMasterIns = new ServiceMapperMaster(urlBase,loggerInstance),
+  serviceMapperMasterIns = new ServiceMapperMaster(urlBase, loggerInstance),
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
-  paymentReconciliationRootRoute = router.route("/"),
-  paymentReconciliationParamRoute = router.route("/:id");
+  paymentReconRootRoute = router.route("/"),
+  paymentReconParamRoute = router.route("/:id");
 
-paymentReconciliationParamRoute
+paymentReconParamRoute
   .get(serviceMapperInstance.retrievePaymentReconciliation.bind(serviceMapperInstance));
 
-paymentReconciliationRootRoute
+paymentReconRootRoute
   .post(serviceMapperInstance.createPaymentReconciliation.bind(serviceMapperInstance));
 
 export default router;
