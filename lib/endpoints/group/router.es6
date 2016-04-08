@@ -4,6 +4,7 @@ import express from "express";
 import {getChFhirServiceInstance} from "ch-fhir-services";
 import {ServiceMapper} from "./ServiceMapper";
 import {ServiceMapperMaster} from "../../reusable/ServiceMapperMaster";
+import loggInstance from "../../util/FhirApiLogger";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -18,8 +19,10 @@ let {NODE_ENV} = process.env,
   serviceInstance = chFhirServiceInstance.serviceInstance,
   events = chFhirServiceInstance.events,
   urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/group`,
-  serviceMapperMasterIns = new ServiceMapperMaster(urlBase),
-  serviceMapperInstance = new ServiceMapper(serviceInstance, events, uniqueIdService, serviceMapperMasterIns),
+  loggerInstance = loggInstance,
+  serviceMapperMasterIns = new ServiceMapperMaster(urlBase, loggerInstance),
+  serviceMapperInstance = new ServiceMapper(
+    serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
   groupRootRoute = router.route("/"),
   groupParamRoute = router.route("/:id");
