@@ -11,11 +11,11 @@ export class ServiceMapper {
 
   }
 
-  createCommunicationReq(req, res, next) {
+  createCommunicationRequest(req, res, next) {
     console.log("========= Create CommunicationRequest===========");
     this.mapperMaster.processCudRequest({
       "service": this.serviceInstance,
-      "event": this.events.fhirResources.communicationReq.create,
+      "event": this.events.fhirResources.communicationRequest.create,
       "uniqueId": this.uniqueIdService.createUniqueId(),
       "req": req,
       "res": res,
@@ -24,13 +24,13 @@ export class ServiceMapper {
 
   }
 
-  retrieveCommunicationReq(req, res, next) {
+  retrieveCommunicationRequest(req, res, next) {
     console.log("========= Retrieve CommunicationRequest ===========");
     console.log(req.params);
     let obj = {
       "id": req.params.id,
       "service": this.serviceInstance,
-      "event": this.events.fhirResources.communicationReq.retrieve,
+      "event": this.events.fhirResources.communicationRequest.retrieve,
       "res": res,
       "req": req,
       "next": next

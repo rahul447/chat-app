@@ -18,19 +18,19 @@ let {NODE_ENV} = process.env,
   uniqueIdService = chFhirServiceInstance.uniqueIdService,
   serviceInstance = chFhirServiceInstance.serviceInstance,
   events = chFhirServiceInstance.events,
-  urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/medicationAdmin`,
+  urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/medicationAdministration`,
   loggerInstance = loggInstance,
   serviceMapperMasterIns = new ServiceMapperMaster(urlBase, loggerInstance),
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
-  medicationAdminRootRoute = router.route("/"),
-  medicationAdminParamRoute = router.route("/:id");
+  medicationAdministrationRootRoute = router.route("/"),
+  medicationAdministrationParamRoute = router.route("/:id");
 
-medicationAdminParamRoute
-  .get(serviceMapperInstance.retrieveMedicationAdmin.bind(serviceMapperInstance));
+medicationAdministrationParamRoute
+  .get(serviceMapperInstance.retrieveMedicationAdministration.bind(serviceMapperInstance));
 
-medicationAdminRootRoute
-  .post(serviceMapperInstance.createMedicationAdmin.bind(serviceMapperInstance));
+medicationAdministrationRootRoute
+  .post(serviceMapperInstance.createMedicationAdministration.bind(serviceMapperInstance));
 
 export default router;

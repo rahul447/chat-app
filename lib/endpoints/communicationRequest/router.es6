@@ -18,19 +18,19 @@ let {NODE_ENV} = process.env,
   uniqueIdService = chFhirServiceInstance.uniqueIdService,
   serviceInstance = chFhirServiceInstance.serviceInstance,
   events = chFhirServiceInstance.events,
-  urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/communicationReq`,
+  urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/communicationRequest`,
   loggerInstance = loggInstance,
   serviceMapperMasterIns = new ServiceMapperMaster(urlBase, loggerInstance),
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
-  communicationReqRootRoute = router.route("/"),
-  communicationReqParamRoute = router.route("/:id");
+  communicationRequestRootRoute = router.route("/"),
+  communicationRequestParamRoute = router.route("/:id");
 
-communicationReqParamRoute
-  .get(serviceMapperInstance.retrieveCommunicationReq.bind(serviceMapperInstance));
+communicationRequestParamRoute
+  .get(serviceMapperInstance.retrieveCommunicationRequest.bind(serviceMapperInstance));
 
-communicationReqRootRoute
-  .post(serviceMapperInstance.createCommunicationReq.bind(serviceMapperInstance));
+communicationRequestRootRoute
+  .post(serviceMapperInstance.createCommunicationRequest.bind(serviceMapperInstance));
 
 export default router;

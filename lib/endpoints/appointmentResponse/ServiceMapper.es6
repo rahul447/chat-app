@@ -11,11 +11,11 @@ export class ServiceMapper {
 
   }
 
-  createAppointmentRes(req, res, next) {
+  createAppointmentResponse(req, res, next) {
     console.log("========= Create AppointmentResponse===========");
     this.mapperMaster.processCudRequest({
       "service": this.serviceInstance,
-      "event": this.events.fhirResources.appointmentRes.create,
+      "event": this.events.fhirResources.appointmentResponse.create,
       "uniqueId": this.uniqueIdService.createUniqueId(),
       "req": req,
       "res": res,
@@ -24,13 +24,13 @@ export class ServiceMapper {
 
   }
 
-  retrieveAppointmentRes(req, res, next) {
+  retrieveAppointmentResponse(req, res, next) {
     console.log("========= Retrieve AppointmentResponse ===========");
     console.log(req.params);
     let obj = {
       "id": req.params.id,
       "service": this.serviceInstance,
-      "event": this.events.fhirResources.appointmentRes.retrieve,
+      "event": this.events.fhirResources.appointmentResponse.retrieve,
       "res": res,
       "req": req,
       "next": next

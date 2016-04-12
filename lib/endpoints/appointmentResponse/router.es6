@@ -24,13 +24,13 @@ let {NODE_ENV} = process.env,
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
-  appointmentResRootRoute = router.route("/"),
-  appointmentResParamRoute = router.route("/:id");
+  appointmentResponseRootRoute = router.route("/"),
+  appointmentResponseParamRoute = router.route("/:id");
 
-appointmentResParamRoute
-  .get(serviceMapperInstance.retrieveAppointmentRes.bind(serviceMapperInstance));
+appointmentResponseParamRoute
+  .get(serviceMapperInstance.retrieveAppointmentResponse.bind(serviceMapperInstance));
 
-appointmentResRootRoute
-  .post(serviceMapperInstance.createAppointmentRes.bind(serviceMapperInstance));
+appointmentResponseRootRoute
+  .post(serviceMapperInstance.createAppointmentResponse.bind(serviceMapperInstance));
 
 export default router;
