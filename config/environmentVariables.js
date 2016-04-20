@@ -7,7 +7,7 @@ var environmentVariables = {
   "FHIR_LOGGING_LEVEL": process.env.FHIR_LOGGING_LEVEL || "debug", // debug
   "FHIR_REDIS_HOST": process.env.FHIR_REDIS_HOST,
   "FHIR_REDIS_PORT": process.env.FHIR_REDIS_PORT,
-  "rabbitMQUrl": process.env.rabbitMQUrl || "amqp://localhost"
+  "rabbitMQUrl": process.env.rabbitMQUrl || "amqp://canta:cantahealth@10.18.6.110:5672"
 };
 
 module.exports = environmentVariables;
