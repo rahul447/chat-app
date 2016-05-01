@@ -82,4 +82,15 @@ export class ServiceMapperMaster {
       .catch(err => args.res.status(400).send({"error": err}))
       .done();
   }
+
+  processMigrateEvent(args) {
+    console.log("master");
+    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processConsumeRequest");
+    args.service.publish(args)
+      .then(msg => {
+        args.res.status(200).send(msg);
+      })
+      .catch(err => args.res.status(400).send({"error": err}))
+      .done();
+  }
 }

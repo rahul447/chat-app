@@ -24,12 +24,17 @@ let {NODE_ENV} = process.env,
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
-  queueRoute = router.route("/");
+  queueFetchRoute = router.route("/fetch"),
+  queueProcessMigrate = router.route("/processMigration"),
+  queueSendRoute = router.route("/push");
 
-queueRoute
+queueSendRoute
   .post(serviceMapperInstance.sendToQueue.bind(serviceMapperInstance));
 
-queueRoute
+queueFetchRoute
   .get(serviceMapperInstance.getMessageFromQueue.bind(serviceMapperInstance));
+
+queueProcessMigrate
+  .get(serviceMapperInstance.generateMigrateEvent.bind(serviceMapperInstance));
 
 export default router;

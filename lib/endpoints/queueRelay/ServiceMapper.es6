@@ -15,6 +15,7 @@ export class ServiceMapper {
     console.log("========= Push to Queue ===========");
     this.mapperMaster.processQueueRequest({
       "service": this.serviceInstance,
+      "message": req.body,
       "req": req,
       "res": res,
       "next": next
@@ -22,8 +23,25 @@ export class ServiceMapper {
   }
 
   getMessageFromQueue(req, res, next) {
+    console.log(req.url);
     console.log("Consume from Queue");
     this.mapperMaster.processConsumeRequest({
+      "service": this.serviceInstance,
+      "req": req,
+      "res": res,
+      "next": next
+    });
+  }
+
+  generateMigrateEvent(req, res, next) {
+    console.log("here to generate");
+    console.log(this.events.focus.legacyMigration);
+    let event = {};
+
+    event.msg = this.events.focus.legacyMigration;
+    console.log("======generate migration event=============");
+    this.mapperMaster.processMigrateEvent({
+      "message": event,
       "service": this.serviceInstance,
       "req": req,
       "res": res,
