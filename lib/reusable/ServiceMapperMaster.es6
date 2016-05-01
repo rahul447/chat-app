@@ -63,4 +63,23 @@ export class ServiceMapperMaster {
       .done();
   }
 
+  processQueueRequest(args) {
+    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processQueueRequest");
+    args.service.publish(args)
+      .then(msg => {
+        args.res.status(200).send(msg);
+      })
+      .catch(err => args.res.status(400).send({"error": err}))
+      .done();
+  }
+
+  processConsumeRequest(args) {
+    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processConsumeRequest");
+    args.service.consume()
+      .then(msg => {
+        args.res.status(200).send(msg);
+      })
+      .catch(err => args.res.status(400).send({"error": err}))
+      .done();
+  }
 }

@@ -103,6 +103,7 @@ import subscription from "./endpoints/subscription/router";
 import parameters from "./endpoints/parameters/router";
 import media from "./endpoints/media/router";
 import processRequest from "./endpoints/processRequest/router";
+import queueRelay from "./endpoints/queueRelay/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -226,6 +227,8 @@ app.use(urlPrefix + "/subscription", subscription);
 app.use(urlPrefix + "/parameters", parameters);
 app.use(urlPrefix + "/media", media);
 app.use(urlPrefix + "/processRequest", processRequest);
+app.use(urlPrefix + "/sendToQueue", queueRelay);
+app.use(urlPrefix + "/fetchQueue", queueRelay);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
