@@ -232,5 +232,5 @@ app.use(mwErrorHandler);
 
 // Starts the app
 app.listen(app.get("port"), function () {
-  console.log("Server has started and is listening on port: " + app.get("port"));
+  console.log(new Date(), "Server has started and is listening on port: " + app.get("port"));
 });
