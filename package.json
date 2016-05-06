@@ -22,8 +22,8 @@
     "url": ""
   },
   "dependencies": {
-    "ch-logger": "^1.0.0",
-    "ch-fhir-services": "^1.2.0",
+    "ch-logger": "^1.1.6",
+    "ch-fhir-services": "^1.2.2",
     "body-parser": "^1.15.0",
     "deep": "0.0.2",
     "express": "^4.13.4",
