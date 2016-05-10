@@ -227,7 +227,7 @@ app.use(urlPrefix + "/subscription", subscription);
 app.use(urlPrefix + "/parameters", parameters);
 app.use(urlPrefix + "/media", media);
 app.use(urlPrefix + "/processRequest", processRequest);
-app.use(urlPrefix + "/processQueue", queueRelay);
+app.use(urlPrefix + "/queue", queueRelay);
 
 app.use(methodOverride);
 app.use(mwErrorHandler);

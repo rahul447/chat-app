@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "ssh://git@10.18.6.104:7999/fhir/ch-fhir-api.git"
   },
   "dependencies": {
-    "ch-logger": "^1.1.6",
-    "ch-fhir-services": "^1.2.2",
+    "ch-logger": "^2.0.0",
+    "ch-fhir-services": "^2.1.0",
     "body-parser": "^1.15.0",
     "deep": "0.0.2",
     "express": "^4.13.4",

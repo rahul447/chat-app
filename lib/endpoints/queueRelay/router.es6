@@ -18,14 +18,14 @@ let {NODE_ENV} = process.env,
   uniqueIdService = chFhirServiceInstance.uniqueIdService,
   serviceInstance = chFhirServiceInstance.serviceInstance,
   events = chFhirServiceInstance.events,
-  urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/sendToQueue`,
+  urlBase = `${config.http.protocol}://${config.http.domain}:${config.http.port}/queue`,
   loggerInstance = loggInstance,
   serviceMapperMasterIns = new ServiceMapperMaster(urlBase, loggerInstance),
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
   queueFetchRoute = router.route("/fetch"),
-  queueProcessMigrate = router.route("/processMigration"),
+  queueProcessMigrateRoute = router.route("/migrationCompleted"),
   queueSendRoute = router.route("/push");
 
 queueSendRoute
@@ -34,7 +34,7 @@ queueSendRoute
 queueFetchRoute
   .get(serviceMapperInstance.getMessageFromQueue.bind(serviceMapperInstance));
 
-queueProcessMigrate
+queueProcessMigrateRoute
   .get(serviceMapperInstance.generateMigrateEvent.bind(serviceMapperInstance));
 
 export default router;
