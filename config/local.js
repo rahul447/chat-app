@@ -13,7 +13,7 @@ var environmentVariables = require("./environmentVariables"),
       "url": environmentVariables.rabbitMQUrl,
       "appname": "ch-fhir-api",
       "timeout": 10000,
-      "queueName": "RabbitTest"
+      "queueName": "ch-fhir-api"
     },
     "mongoDb": {
       "connectionString": environmentVariables.FHIR_MONGO_CONNECTION_STRING,
