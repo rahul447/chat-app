@@ -9,7 +9,7 @@
  * Represents a service error.
  * @class
  */
-export default class ApiError extends Error {
+export default class ApiError {
 
   /**
    * @constructor
@@ -20,8 +20,6 @@ export default class ApiError extends Error {
    * @param {Number} statusCode the Http status code for 0JavaScript error.
    */
   constructor(requestId, errorType, messages, innerError, statusCode) {
-
-    super();
 
     /** @member {string} requestId The id of the service request associated with the error. */
     this.requestId = requestId;

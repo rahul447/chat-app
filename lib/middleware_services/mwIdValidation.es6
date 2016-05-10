@@ -7,7 +7,7 @@ function mwIdValidation(req, res, next) {
       [{"err": "Invalid element inside body"}]
       , 400);
 
-    return res.status(400).send(apiError);
+    return next(apiError);
   }
 
   next();
