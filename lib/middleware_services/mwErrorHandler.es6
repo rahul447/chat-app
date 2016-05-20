@@ -7,12 +7,11 @@ function mwErrorHandler(err, req, res, next) {
 
     res.status(500).send("Internal Server Error");
 
-  }else if (err instanceof ApiError) {
+  } else if (err instanceof ApiError) {
 
     res.status(err.statusCode).send(err);
 
   }
-
   next();
 }
 

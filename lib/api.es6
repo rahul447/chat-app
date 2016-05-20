@@ -104,6 +104,7 @@ import parameters from "./endpoints/parameters/router";
 import media from "./endpoints/media/router";
 import processRequest from "./endpoints/processRequest/router";
 import queueRelay from "./endpoints/queueRelay/router";
+import ApiError from "./util/apiError";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -228,6 +229,12 @@ app.use(urlPrefix + "/parameters", parameters);
 app.use(urlPrefix + "/media", media);
 app.use(urlPrefix + "/processRequest", processRequest);
 app.use(urlPrefix + "/queue", queueRelay);
+
+app.use(function resourceNotFound(req, res, next) {
+  let apiError = new ApiError(req.id, "Error", [`Resource doesn't exists for RequestId ${req.id}`], "", 404);
+
+  next(apiError);
+});
 
 app.use(methodOverride);
 app.use(mwErrorHandler);
