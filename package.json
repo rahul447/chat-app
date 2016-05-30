@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "ch-logger": "^2.0.0",
-    "ch-fhir-services": "^2.1.0",
+    "ch-fhir-services": "^2.2.0",
     "body-parser": "^1.15.0",
     "deep": "0.0.2",
     "express": "^4.13.4",
