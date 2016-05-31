@@ -21,6 +21,7 @@ export class ServiceMapperMaster {
   }
 
   processCudRequest(args) {
+    this.loggerInstance.info("==========ProcessCudRequest======================>");
     let entityIds,
       validMsg = {},
       resourceUri = this.urlBase + args.req.originalUrl.substring(0);
@@ -47,13 +48,16 @@ export class ServiceMapperMaster {
         validMsg.entityId = entityIds.id;
         validMsg.requestId = args.req.id;
         validMsg.msg = msg;
+        msg.statusCode = typeof msg.statusCode !== "undefined" ? msg.statusCode : 200;
         args.res.status(msg.statusCode).send(validMsg);
       }, err => {
+        err.statusCode = typeof err.statusCode !== "undefined" ? err.statusCode : 500;
         args.res.status(err.statusCode).send({"error": err});
       }).done();
   }
 
   processRetrieveRequest(args) {
+    this.loggerInstance.info("=================processRetrieveRequest=================>");
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
     args.service.retrieve(args)
       .then(msg => {
@@ -64,6 +68,7 @@ export class ServiceMapperMaster {
   }
 
   processQueueRequest(args) {
+    this.loggerInstance.info("=============processQueueRequest========================>");
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processQueueRequest");
     args.service.publish(args)
       .then(msg => {
@@ -74,6 +79,7 @@ export class ServiceMapperMaster {
   }
 
   processConsumeRequest(args) {
+    this.loggerInstance.info("===============processConsumeRequest======================>");
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processConsumeRequest");
     args.service.consume()
       .then(msg => {
@@ -84,7 +90,7 @@ export class ServiceMapperMaster {
   }
 
   processMigrateEvent(args) {
-    console.log("master");
+    this.loggerInstance.info("================processMigrateEvent========================>");
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processConsumeRequest");
     args.service.publish(args)
       .then(msg => {

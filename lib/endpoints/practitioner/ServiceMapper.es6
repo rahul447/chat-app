@@ -12,7 +12,7 @@ export class ServiceMapper {
   }
 
   createPractitioner(req, res, next) {
-    console.log("========= Create Practitioner ===========");
+    this.loggerInstance.info("========= Create Practitioner ===========");
     this.mapperMaster.processCudRequest({
       "service": this.serviceInstance,
       "event": this.events.fhirResources.practitioner.create,
@@ -25,7 +25,7 @@ export class ServiceMapper {
   }
 
   retrievePractitioner(req, res, next) {
-    console.log("========= Retrieve Practitioner ===========");
+    this.loggerInstance.info("========= Retrieve Practitioner ===========");
     console.log(req.params);
     let obj = {
       "id": req.params.id,

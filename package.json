@@ -22,11 +22,12 @@
     "url": "ssh://git@10.18.6.104:7999/fhir/ch-fhir-api.git"
   },
   "dependencies": {
-    "ch-logger": "^2.0.0",
-    "ch-fhir-services": "^2.2.0",
     "body-parser": "^1.15.0",
+    "ch-fhir-services": "^2.3.0",
+    "ch-logger": "^2.0.0",
     "deep": "0.0.2",
     "express": "^4.13.4",
+    "express-domain-middleware": "^0.1.0",
     "express-session": "^1.13.0",
     "method-override": "^2.3.5",
     "node-uuid": "^1.4.7",
