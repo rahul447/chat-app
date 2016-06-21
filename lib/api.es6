@@ -105,6 +105,7 @@ import media from "./endpoints/media/router";
 import processRequest from "./endpoints/processRequest/router";
 import queueRelay from "./endpoints/queueRelay/router";
 import ApiError from "./util/apiError";
+import domain from "express-domain-middleware";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -130,6 +131,7 @@ app.use(session({
 }));
 
 // Defines top middleware and routes
+app.use(domain);
 app.use(bodyParser.json());
 app.use(mwIdValidation);
 app.use(mwAllowCrossDomain);
