@@ -2,11 +2,11 @@
 
 export class ServiceMapperMaster {
 
-  constructor(urlBase, loggerInstance) {
+  constructor(urlBase, loggerInstance, config) {
 
     this.urlBase = urlBase;
     this.loggerInstance = loggerInstance;
-
+    this.config_ = config || {};
   }
 
   static extractEntityIds(parameters) {
@@ -70,6 +70,19 @@ export class ServiceMapperMaster {
   processQueueRequest(args) {
     this.loggerInstance.info("=============processQueueRequest========================>");
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processQueueRequest");
+
+    let bridgeQueueCount,
+      queueName;
+
+    if (this.config_ && Object.keys(this.config_).length > 0) {
+
+      bridgeQueueCount = this.config_.nodeBridgeQueueCount;
+      queueName = this.config_.rabbitMQ.queueName;
+      queueName = this.getRandomQueueName(queueName, 1, bridgeQueueCount);
+    }
+
+    args.queueName = queueName;
+
     args.service.publish(args)
       .then(msg => {
         args.res.status(200).send(msg);
@@ -81,7 +94,8 @@ export class ServiceMapperMaster {
   processConsumeRequest(args) {
     this.loggerInstance.info("===============processConsumeRequest======================>");
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processConsumeRequest");
-    args.service.consume()
+
+    args.service.consume({"queueName": ""})
       .then(msg => {
         args.res.status(200).send(msg);
       })
@@ -89,9 +103,29 @@ export class ServiceMapperMaster {
       .done();
   }
 
+  getRandomQueueName(queueName, minIncluded, maxIncluded) {
+
+    let randomNo = Math.floor(Math.random() * (maxIncluded - minIncluded + 1)) + minIncluded;
+
+    return `${queueName}-${randomNo}`;
+  }
+
   processMigrateEvent(args) {
     this.loggerInstance.info("================processMigrateEvent========================>");
-    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processConsumeRequest");
+    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processMigrateEvent");
+
+    let bridgeQueueCount,
+      queueName;
+
+    if (this.config_ && Object.keys(this.config_).length > 0) {
+
+      bridgeQueueCount = this.config_.nodeBridgeQueueCount;
+      queueName = this.config_.rabbitMQ.queueName;
+      queueName = this.getRandomQueueName(queueName, 1, bridgeQueueCount);
+    }
+
+    args.queueName = queueName;
+
     args.service.publish(args)
       .then(msg => {
         args.res.status(200).send(msg);
