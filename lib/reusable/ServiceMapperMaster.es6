@@ -78,7 +78,7 @@ export class ServiceMapperMaster {
 
       bridgeQueueCount = this.config_.nodeBridgeQueueCount;
       queueName = this.config_.rabbitMQ.queueName;
-      queueName = this.getRandomQueueName(queueName, 1, bridgeQueueCount);
+      queueName = bridgeQueueCount <= 1 ? queueName : this.getRandomQueueName(queueName, 1, bridgeQueueCount);
     }
 
     args.queueName = queueName;
