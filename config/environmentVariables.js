@@ -9,7 +9,7 @@ var environmentVariables = {
   "FHIR_REDIS_PORT": process.env.FHIR_REDIS_PORT,
   "FHIR_RABBITMQ_URL": process.env.FHIR_RABBITMQ_URL || "amqp://integration:integration@10.18.6.109:5672",
   "FHIR_QUEUE_NAME": process.env.FHIR_QUEUE_NAME || "test",
-  "FHIR_EXCHANGE_NAME": process.env.FHIR_EXCHANGE_NAME || "test-cantaHealth",
+  "FHIR_EXCHANGE_NAME": process.env.FHIR_EXCHANGE_NAME || "test-cantaHealth"
 };
 
 module.exports = environmentVariables;
