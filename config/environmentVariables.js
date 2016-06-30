@@ -10,6 +10,7 @@ var environmentVariables = {
   "FHIR_RABBITMQ_URL": process.env.FHIR_RABBITMQ_URL || "amqp://integration:integration@10.18.6.109:5672",
   "FHIR_QUEUE_NAME": process.env.FHIR_QUEUE_NAME || "test",
   "FHIR_EXCHANGE_NAME": process.env.FHIR_EXCHANGE_NAME || "test-cantaHealth",
+  "FHIR_PREFETCH_COUNT": process.env.FHIR_PREFETCH_COUNT || 1
 };
 
 module.exports = environmentVariables;

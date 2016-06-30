@@ -9,13 +9,13 @@ var environmentVariables = require("./environmentVariables"),
       "domain": "127.0.0.1",
       "port": 8050
     },
-    "nodeBridgeQueueCount": 4,
+    "nodeBridgeQueueCount": 1,
     "rabbitMQ": {
       "url": environmentVariables.FHIR_RABBITMQ_URL,
       "queueName": environmentVariables.FHIR_QUEUE_NAME,
       "exchangeName": environmentVariables.FHIR_EXCHANGE_NAME,
       "exchangeType": "direct",
-      "prefetchCount": 1,
+      "prefetchCount": environmentVariables.FHIR_PREFETCH_COUNT,
       "options": {}
     },
     "mongoDb": {
