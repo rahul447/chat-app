@@ -135,4 +135,16 @@ export class ServiceMapperMaster {
       .catch(err => args.res.status(400).send({"error": err}))
       .done();
   }
+
+  processRetrieveFocusResource(args) {
+    this.loggerInstance.info("=================processRetrieveResource=================>");
+    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
+    args.service.retrievefromSqlId(args)
+      .then(msg => {
+        console.log("in retrieve", msg);
+        args.res.status(200).send(msg);
+      })
+      .catch(err => args.res.status(400).send({"error": err}))
+      .done();
+  }
 }

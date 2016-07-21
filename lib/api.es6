@@ -106,6 +106,7 @@ import processRequest from "./endpoints/processRequest/router";
 import queueRelay from "./endpoints/queueRelay/router";
 import ApiError from "./util/apiError";
 import domain from "express-domain-middleware";
+import focusRequest from "./endpoints/focus/router";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -231,6 +232,7 @@ app.use(urlPrefix + "/parameters", parameters);
 app.use(urlPrefix + "/media", media);
 app.use(urlPrefix + "/processRequest", processRequest);
 app.use(urlPrefix + "/queue", queueRelay);
+app.use(urlPrefix + "/focus", focusRequest);
 
 app.use(function resourceNotFound(req, res, next) {
   let apiError = new ApiError(req.id, "Error", [`Resource doesn't exists for RequestId ${req.id}`], "", 404);
