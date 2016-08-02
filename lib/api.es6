@@ -9,6 +9,7 @@ import mwErrorHandler from "./middleware_services/mwErrorHandler";
 import mwAddrequestId from "./middleware_services/mwAddRequestId";
 import mwIdValidation from "./middleware_services/mwIdValidation";
 import checkEnvironmentVariables from "./util/checkEnvironmentVariables";
+import mwAuthenticateRequest from "./middleware_services/mwAuthenticateRequest";
 import practitioner from "./endpoints/practitioner/router";
 import patient from "./endpoints/patient/router";
 import organization from "./endpoints/organization/router";
@@ -123,6 +124,7 @@ if (config.environmentVariableChecker.isEnabled) {
 
 // Sets the relevant config app-wise
 app.set("port", config.http.port);
+app.set("secretKey", config.secretKey);
 
 app.use(session({
   "secret": "encrypted key",
@@ -134,9 +136,16 @@ app.use(session({
 // Defines top middleware and routes
 app.use(domain);
 app.use(bodyParser.json());
+
 app.use(mwIdValidation);
 app.use(mwAllowCrossDomain);
 app.use(mwAddrequestId);
+
+app.use(urlPrefix + "/healthcheck", (req, res) => {
+  res.status(200).send("OK");
+});
+
+app.use(mwAuthenticateRequest);
 app.use(urlPrefix + "/practitioner", practitioner);
 app.use(urlPrefix + "/patient", patient);
 app.use(urlPrefix + "/organization", organization);

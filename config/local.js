@@ -56,7 +56,7 @@ var environmentVariables = require("./environmentVariables"),
       ]
     },
     "authorization": {
-      "authorize": false
+      "authorize": true
     },
     "caching": {
       "host": environmentVariables.FHIR_REDIS_HOST,
@@ -66,7 +66,8 @@ var environmentVariables = require("./environmentVariables"),
     "environmentVariableChecker": {
       "isEnabled": false
     },
-    "urlPrefix": "/fhir/v1"
+    "urlPrefix": "/fhir/v1",
+    "secretKey": environmentVariables.API_SECRET_KEY
   };
 
 module.exports = config;
