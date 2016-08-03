@@ -56,7 +56,7 @@ var environmentVariables = require("./environmentVariables"),
       ]
     },
     "authorization": {
-      "authorize": true
+      "authorize": false
     },
     "caching": {
       "host": environmentVariables.FHIR_REDIS_HOST,
