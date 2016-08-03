@@ -11,7 +11,8 @@ var environmentVariables = {
   "FHIR_QUEUE_NAME": process.env.FHIR_QUEUE_NAME || "test",
   "FHIR_EXCHANGE_NAME": process.env.FHIR_EXCHANGE_NAME || "test-cantaHealth",
   "FHIR_PREFETCH_COUNT": process.env.FHIR_PREFETCH_COUNT || 1,
-  "NODE_BRIDGE_QUEUE_COUNT": process.NODE_BRIDGE_QUEUE_COUNT || 1
+  "NODE_BRIDGE_QUEUE_COUNT": process.NODE_BRIDGE_QUEUE_COUNT || 1,
+  "API_SECRET_KEY": process.env.API_SECRET_KEY || "SECRETKEY"
 };
 
 module.exports = environmentVariables;
