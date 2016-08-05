@@ -9,13 +9,13 @@ var environmentVariables = require("./environmentVariables"),
       "domain": "127.0.0.1",
       "port": 8050
     },
-    "nodeBridgeQueueCount": environmentVariables.NODE_BRIDGE_QUEUE_COUNT,
+    "nodeBridgeQueueCount": Number(environmentVariables.NODE_BRIDGE_QUEUE_COUNT),
     "rabbitMQ": {
       "url": environmentVariables.FHIR_RABBITMQ_URL,
       "queueName": environmentVariables.FHIR_QUEUE_NAME,
       "exchangeName": environmentVariables.FHIR_EXCHANGE_NAME,
       "exchangeType": "direct",
-      "prefetchCount": environmentVariables.FHIR_PREFETCH_COUNT,
+      "prefetchCount": Number(environmentVariables.FHIR_PREFETCH_COUNT),
       "options": {}
     },
     "mongoDb": {
@@ -51,17 +51,16 @@ var environmentVariables = require("./environmentVariables"),
         },
         {
           "level": environmentVariables.FHIR_LOGGING_LEVEL,
-          "path": "/var/log/fhir/ch-fhir-api.log"
+          "path": "/var/log/fhir/ch-fhir-api-debug.log"
+        },
+        {
+          "level": "info",
+          "path": "/var/log/fhir/ch-fhir-api-info.log"
         }
       ]
     },
     "authorization": {
       "authorize": false
-    },
-    "caching": {
-      "host": environmentVariables.FHIR_REDIS_HOST,
-      "port": environmentVariables.FHIR_REDIS_PORT,
-      "ttl": 24*60*60
     },
     "environmentVariableChecker": {
       "isEnabled": false
