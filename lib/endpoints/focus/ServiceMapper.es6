@@ -11,11 +11,10 @@ export class ServiceMapper {
   }
 
   retrieveResourceByIdentifier(req, res, next) {
-    console.log("========= Retrieve Flag ===========");
+    console.log("========= Retrieving for focus fourth level ===========");
     let obj = {
-      "id": req.params.clientSqlId,
+      "id": req.body.ids,
       "service": this.serviceInstance,
-      "event": this.events.fhirResources[req.params.resourceType.toLowerCase()].retrieve,
       "res": res,
       "req": req,
       "next": next

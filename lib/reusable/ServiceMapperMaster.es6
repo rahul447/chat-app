@@ -137,9 +137,10 @@ export class ServiceMapperMaster {
   }
 
   processRetrieveFocusResource(args) {
-    this.loggerInstance.info("=================processRetrieveResource=================>");
+    this.loggerInstance.info("=================processRetrieveFocusResource=================>");
+
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
-    args.service.retrievefromSqlId(args)
+    args.service.retrieveforFocusFourthLevel(args)
       .then(msg => {
         console.log("in retrieve", msg);
         args.res.status(200).send(msg);

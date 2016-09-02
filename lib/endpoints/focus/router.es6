@@ -23,10 +23,10 @@ let {NODE_ENV} = process.env,
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, loggerInstance, serviceMapperMasterIns),
   router = express.Router(),
-  flagParamRoute = router.route("/:resourceType/:clientSqlId");
+  focusfhirRoute = router.route("/fourthlevel");
 
-flagParamRoute
+focusfhirRoute
   .get(mwCheckFocusEntitlements)
-  .get(serviceMapperInstance.retrieveResourceByIdentifier.bind(serviceMapperInstance));
+  .post(serviceMapperInstance.retrieveResourceByIdentifier.bind(serviceMapperInstance));
 
 export default router;
