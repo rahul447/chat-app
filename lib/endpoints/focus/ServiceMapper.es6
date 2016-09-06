@@ -5,7 +5,7 @@ export class ServiceMapper {
 
     this.serviceInstance = serviceInstance;
     this.events = events;
-    this.logger = logger;
+    this.loggerInstance = logger;
     this.mapperMaster = mapperMaster;
 
   }
