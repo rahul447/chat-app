@@ -11,7 +11,7 @@ export class ServiceMapper {
   }
 
   retrieveResourceByIdentifier(req, res, next) {
-    console.log("========= Retrieving for focus fourth level ===========");
+    this.loggerInstance.info("========= Retrieving for focus fourth level ===========");
     let obj = {
       "id": req.body.ids,
       "service": this.serviceInstance,
