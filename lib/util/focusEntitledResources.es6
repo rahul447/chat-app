@@ -1,7 +1,7 @@
 "use strict";
 
 let projections = {
-  "LossesByLocation":{
+  "LossesByLocation": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -25,7 +25,7 @@ let projections = {
       "_id": 0
     }
   },
-  "LossesByPayer":{
+  "LossesByPayer": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -49,7 +49,7 @@ let projections = {
       "_id": 0
     }
   },
-  "AverageWatingTime/Location":{
+  "AverageWatingTime/Location": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -73,7 +73,7 @@ let projections = {
       "_id": 0
     }
   },
-  "LasikConversionRate":{
+  "LasikConversionRate": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -97,7 +97,7 @@ let projections = {
       "_id": 0
     }
   },
-  "CataractConversionRate":{
+  "CataractConversionRate": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -121,7 +121,7 @@ let projections = {
       "_id": 0
     }
   },
-  "ExternalReferralsByPayer":{
+  "ExternalReferralsByPayer": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -145,7 +145,7 @@ let projections = {
       "_id": 0
     }
   },
-  "ReferralMix":{
+  "ReferralMix": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -169,7 +169,7 @@ let projections = {
       "_id": 0
     }
   },
-  "MissedDiabeticConsult-Ref.PQRS Measure19":{
+  "MissedDiabeticConsult-Ref.PQRS Measure19": {
     "patient": {
       "_id": 0,
       "name": "$name.text",
@@ -203,7 +203,7 @@ let projections = {
     "appointment": {
       "_id": 0,
       "AppointmentId": "$identifier.value",
-      "WorkingDate":"$identifier[1].period.start"
+      "WorkingDate": "$identifier.period.start"
     },
     "location": {
       "_id": 0,
@@ -212,10 +212,10 @@ let projections = {
     },
     "practitioner": {
       "_id": 0,
-      "PractitionerName": "$name.text",
+      "PractitionerName": "$name.text"
     }
   },
-  "TechnicianProductivity":{
+  "TechnicianProductivity": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
@@ -224,7 +224,7 @@ let projections = {
     "appointment": {
       "_id": 0,
       "AppointmentId": "$identifier.value",
-      "WorkingDate":"$identifier[1].period.start"
+      "WorkingDate": "$identifier[1].period.start"
     },
     "location": {
       "_id": 0,
@@ -233,10 +233,10 @@ let projections = {
     },
     "practitioner": {
       "_id": 0,
-      "TechnicianName": "$name.text",
+      "TechnicianName": "$name.text"
     }
   },
-  "CounsellorProductivity":{
+  "CounsellorProductivity": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
@@ -244,15 +244,15 @@ let projections = {
     },
     "practitioner": {
       "_id": 0,
-      "PractitionerName": "$name.text",
+      "PractitionerName": "$name.text"
     },
     "ProcedureRequest": {
       "_id": 0,
-      "WorkingDate":"$scheduledDateTime",
+      "WorkingDate": "$scheduledDateTime",
       "VisitId": "$identifier.value"
     }
   },
-  "OpthalmologistProductivity":{
+  "OpthalmologistProductivity": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
@@ -261,7 +261,7 @@ let projections = {
     "appointment": {
       "_id": 0,
       "AppointmentId": "$identifier.value",
-      "WorkingDate":"$identifier[1].period.start"
+      "WorkingDate": "$identifier[1].period.start"
     },
     "location": {
       "_id": 0,
@@ -270,10 +270,10 @@ let projections = {
     },
     "practitioner": {
       "_id": 0,
-      "PractitionerName": "$name.text",
+      "PractitionerName": "$name.text"
     }
   },
-  "LensUtilization":{
+  "LensUtilization": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
@@ -290,19 +290,19 @@ let projections = {
     },
     "Procedure": {
       "_id": 0,
-      "SurgeryDate":"$performedDateTime"
+      "SurgeryDate": "$performedDateTime"
     },
     "Device": {
       "_id": 0,
-      "LensType":"$model",
+      "LensType": "$model",
       "Eye": "$note.text"
     }
   },
-  "ORComplications":{
+  "ORComplications": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
-      "Patient_DOB":"$birthDate"
+      "Patient_DOB": "$birthDate"
     },
     "appointment": {
       "_id": 0,
@@ -312,44 +312,44 @@ let projections = {
     "practitioner": {
       "_id": 0,
       "PractitionerName": "$name.text",
-      "Complications":"$comment"
+      "Complications": "$comment"
     },
     "Procedure": {
       "_id": 0,
-      "ProcedureDate":"$performedDateTime"
+      "ProcedureDate": "$performedDateTime"
     }
   },
-  "ClaimErrorRate":{
+  "ClaimErrorRate": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
       "Patient_Id": "$identifier.value"
     },
     "ClaimResponse": {
-      "ClaimId":"$identifier.value",
+      "ClaimId": "$identifier.value",
       "ClaimEntryDate": "$created",
       "ClaimStatus": "$disposition"
     },
-    "ProcedureRequest" : {
-      "CPTCode":"$code.text"
+    "ProcedureRequest": {
+      "CPTCode": "$code.text"
     },
-    "DiagnosticReport" : {
-      "ICDCode" :"$codedDiagnosis.text"
+    "DiagnosticReport": {
+      "ICDCode": "$codedDiagnosis.text"
     }
   },
-  "ClaimDeniedByPayer":{
+  "ClaimDeniedByPayer": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
       "Patient_Id": "$identifier.value"
     },
     "ClaimResponse": {
-      "ClaimId":"$identifier.value",
+      "ClaimId": "$identifier.value",
       "ClaimEntryDate": "$created",
       "ClaimStatus": "$disposition"
     }
   },
-  "OTReturns":{
+  "OTReturns": {
     "patient": {
       "_id": 0,
       "PatientName": "$name.text",
@@ -357,13 +357,13 @@ let projections = {
     },
     "practitioner": {
       "_id": 0,
-      "PractitionerName":"$name"
+      "PractitionerName": "$name"
     },
-    "Procedure" : {
-      "ProcedureDate":"$performedDateTime"
-    },
+    "Procedure": {
+      "ProcedureDate": "$performedDateTime"
+    }
   },
-  "PostCataractVAI":{},
+  "PostCataractVAI": {}
 };
 
 export default projections;
