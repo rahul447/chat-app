@@ -193,63 +193,94 @@ let projections = {
       "_id": 0
     }
   },
-
   "OptometristProductivity": {
     "patient": {
       "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
+      "PatientName": {
+        "$arrayElemAt": ["$name.text", 0]
+      },
+      "Patient_Id": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "appointment": {
       "_id": 0,
-      "AppointmentId": "$identifier.value",
-      "WorkingDate": "$identifier.period.start"
+      "AppointmentId": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      },
+      "WorkingDate": {
+        "$arrayElemAt": ["$identifier.period.start", 0]
+      }
     },
     "location": {
       "_id": 0,
       "LocationName": "$name",
-      "Facility_Code": "$identifier.value"
+      "Facility_Code": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "practitioner": {
       "_id": 0,
-      "PractitionerName": "$name.text"
+      "PractitionerName": {
+        "$arrayElemAt": ["$name.text", 0]
+      }
     }
   },
   "TechnicianProductivity": {
     "patient": {
       "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
+      "PatientName": {
+        "$arrayElemAt": ["$name.text", 0]
+      },
+      "Patient_Id": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "appointment": {
       "_id": 0,
-      "AppointmentId": "$identifier.value",
-      "WorkingDate": "$identifier[1].period.start"
+      "AppointmentId": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      },
+      "WorkingDate": {
+        "$arrayElemAt": ["$identifier.period.start", 0]
+      }
     },
     "location": {
       "_id": 0,
       "LocationName": "$name",
-      "Facility_Code": "$identifier.value"
+      "Facility_Code": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "practitioner": {
       "_id": 0,
-      "TechnicianName": "$name.text"
+      "TechnicianName": {
+        "$arrayElemAt": ["$name.text", 0]
+      }
     }
   },
   "CounsellorProductivity": {
     "patient": {
       "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
+      "PatientName": {
+        "$arrayElemAt": ["$name.text", 0]
+      },
+      "Patient_Id": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "practitioner": {
       "_id": 0,
-      "PractitionerName": "$name.text"
+      "PractitionerName": {
+        "$arrayElemAt": ["$name.text", 0]
+      }
     },
     "ProcedureRequest": {
       "_id": 0,
       "WorkingDate": "$scheduledDateTime",
-      "VisitId": "$identifier.value"
+      "VisitId": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     }
   },
   "OpthalmologistProductivity": {
