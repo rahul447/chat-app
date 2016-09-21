@@ -25,7 +25,7 @@ let {NODE_ENV} = process.env,
     serviceInstance, events, uniqueIdService, serviceMapperMasterIns, loggerInstance),
   router = express.Router(),
   queueFetchRoute = router.route("/fetch"),
-  queueProcessMigrateRoute = router.route("/migrationCompleted"),
+  queueProcessMigrateRoute = router.route("/:emr/:practiceName/migrationCompleted"),
   queueSendRoute = router.route("/push");
 
 queueSendRoute
