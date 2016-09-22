@@ -195,7 +195,7 @@ let projections = {
   },
   "OptometristProductivity": {
     "patient": {
-      "_id": 0,
+      "Id": "$_id",
       "PatientName": {
         "$arrayElemAt": ["$name.text", 0]
       },
@@ -204,7 +204,7 @@ let projections = {
       }
     },
     "appointment": {
-      "_id": 0,
+      "Id": "$_id",
       "AppointmentId": {
         "$arrayElemAt": ["$identifier.value", 0]
       },
@@ -213,14 +213,14 @@ let projections = {
       }
     },
     "location": {
-      "_id": 0,
+      "Id": "$_id",
       "LocationName": "$name",
       "Facility_Code": {
         "$arrayElemAt": ["$identifier.value", 0]
       }
     },
     "practitioner": {
-      "_id": 0,
+      "Id": "$_id",
       "PractitionerName": {
         "$arrayElemAt": ["$name.text", 0]
       }
@@ -228,7 +228,7 @@ let projections = {
   },
   "TechnicianProductivity": {
     "patient": {
-      "_id": 0,
+      "Id": "$_id",
       "PatientName": {
         "$arrayElemAt": ["$name.text", 0]
       },
@@ -237,7 +237,7 @@ let projections = {
       }
     },
     "appointment": {
-      "_id": 0,
+      "Id": "$_id",
       "AppointmentId": {
         "$arrayElemAt": ["$identifier.value", 0]
       },
@@ -246,22 +246,20 @@ let projections = {
       }
     },
     "location": {
-      "_id": 0,
+      "Id": "$_id",
       "LocationName": "$name",
       "Facility_Code": {
         "$arrayElemAt": ["$identifier.value", 0]
       }
     },
     "practitioner": {
-      "_id": 0,
-      "TechnicianName": {
-        "$arrayElemAt": ["$name.text", 0]
-      }
+      "Id": "$_id",
+      "TechnicianName": "$name.text"
     }
   },
   "CounsellorProductivity": {
     "patient": {
-      "_id": 0,
+      "Id": "$_id",
       "PatientName": {
         "$arrayElemAt": ["$name.text", 0]
       },
@@ -269,14 +267,21 @@ let projections = {
         "$arrayElemAt": ["$identifier.value", 0]
       }
     },
-    "practitioner": {
-      "_id": 0,
-      "PractitionerName": {
-        "$arrayElemAt": ["$name.text", 0]
+    "appointment": {
+      "Id": "$_id",
+      "AppointmentId": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      },
+      "WorkingDate": {
+        "$arrayElemAt": ["$identifier.period.start", 0]
       }
     },
-    "ProcedureRequest": {
-      "_id": 0,
+    "practitioner": {
+      "Id": "$_id",
+      "PractitionerName": "$name.text"
+    },
+    "procedurerequest": {
+      "Id": "$_id",
       "WorkingDate": "$scheduledDateTime",
       "VisitId": {
         "$arrayElemAt": ["$identifier.value", 0]
@@ -286,69 +291,92 @@ let projections = {
   "OpthalmologistProductivity": {
     "patient": {
       "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
+      "PatientName": {
+        "$arrayElemAt": ["$name.text", 0]
+      },
+      "Patient_Id": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "appointment": {
       "_id": 0,
-      "AppointmentId": "$identifier.value",
-      "WorkingDate": "$identifier[1].period.start"
+      "AppointmentId": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      },
+      "WorkingDate": {
+        "$arrayElemAt": ["$identifier.period.start", 1]
+      }
     },
     "location": {
       "_id": 0,
       "LocationName": "$name",
-      "Facility_Code": "$identifier.value"
+      "Facility_Code": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "practitioner": {
       "_id": 0,
-      "PractitionerName": "$name.text"
+      "PractitionerName": {
+        "$arrayElemAt": ["$name.text", 0]
+      }
     }
   },
   "LensUtilization": {
     "patient": {
-      "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
+      "Id": "$_id",
+      "PatientName": {
+        "$arrayElemAt": ["$name.text", 0]
+      },
+      "Patient_Id": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "location": {
-      "_id": 0,
+      "Id": "$_id",
       "LocationName": "$name",
-      "Facility_Code": "$identifier.value"
+      "Facility_Code": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
     "practitioner": {
-      "_id": 0,
+      "Id": "$_id",
       "PractitionerName": "$name.text"
     },
-    "Procedure": {
-      "_id": 0,
-      "SurgeryDate": "$performedDateTime"
-    },
-    "Device": {
-      "_id": 0,
+    "device": {
+      "Id": "$_id",
       "LensType": "$model",
-      "Eye": "$note.text"
+      "Eye": {
+        "$arrayElemAt": ["$note.text", 0]
+      },
+      "SurgeryDate": "$manufactureDate"
     }
   },
   "ORComplications": {
     "patient": {
-      "_id": 0,
-      "PatientName": "$name.text",
+      "Id": "$_id",
+      "PatientName": {
+        "$arrayElemAt": ["$name.text", 0]
+      },
       "Patient_DOB": "$birthDate"
     },
     "appointment": {
-      "_id": 0,
-      "AppointmentId": "$identifier.value",
+      "Id": "$_id",
+      "AppointmentId": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      },
       "Description": "$description"
     },
     "practitioner": {
-      "_id": 0,
+      "Id": "$_id",
       "PractitionerName": "$name.text",
       "Complications": "$comment"
-    },
-    "Procedure": {
-      "_id": 0,
-      "ProcedureDate": "$performedDateTime"
     }
+
+    /* ,
+    "procedure": {
+      "Id": "$_id",
+      "ProcedureDate": "$performedDateTime"
+    }*/
   },
   "ClaimErrorRate": {
     "patient": {
@@ -397,4 +425,20 @@ let projections = {
   "PostCataractVAI": {}
 };
 
+  /* resources = {
+    "Procedurerequest": "ProcedureRequest",
+    "Appointment": "Appointment",
+    "Device": "Device",
+    "Diagnosticreport": "DiagnosticReport",
+    "Encounter": "Encounter",
+    "Location": "Location",
+    "Organization": "Organization",
+    "Patient": "Patient",
+    "Paymentreconciliation": "PaymentReconciliation",
+    "Practitioner": "Practitioner",
+    "Procedure": "Procedure"
+  };*/
+
 export default projections;
+
+/* export default resources;*/

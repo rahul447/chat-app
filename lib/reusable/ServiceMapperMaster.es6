@@ -137,7 +137,7 @@ export class ServiceMapperMaster {
   }
 
   processRetrieveFocusResource(args) {
-    this.loggerInstance.info("=================processRetrieveFocusResource=================>");
+    this.loggerInstance.info("=================processRetrieveFocusResource=================>", args);
 
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
     args.service.retrieveforFocusFourthLevel(args)
