@@ -4,7 +4,7 @@ import {getChFhirServiceInstance} from "ch-fhir-services";
 import {ServiceMapper} from "./ServiceMapper";
 import {ServiceMapperMaster} from "../../reusable/ServiceMapperMaster";
 import loggInstance from "../../util/FhirApiLogger";
-import mwCheckFocusEntitlements from "../../middleware_services/mwCheckFocusEntitlements";
+// import mwCheckFocusEntitlements from "../../middleware_services/mwCheckFocusEntitlements";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -23,10 +23,13 @@ let {NODE_ENV} = process.env,
   serviceMapperInstance = new ServiceMapper(
     serviceInstance, events, loggerInstance, serviceMapperMasterIns),
   router = express.Router(),
-  focusfhirRoute = router.route("/fourthlevel");
+  focusfhirRoute = router.route("/fourthlevel"),
+  focusParamRoute = router.route("/:resourceType/:clientSqlId");
+
+focusParamRoute
+  .get(serviceMapperInstance.retrieveResourceByIdentifier.bind(serviceMapperInstance));
 
 focusfhirRoute
-  .get(mwCheckFocusEntitlements)
-  .post(serviceMapperInstance.retrieveResourceByIdentifier.bind(serviceMapperInstance));
+  .post(serviceMapperInstance.retrieveResourceByIdentifierMulti.bind(serviceMapperInstance));
 
 export default router;
