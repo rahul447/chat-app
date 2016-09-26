@@ -290,7 +290,7 @@ let projections = {
   },
   "OpthalmologistProductivity": {
     "patient": {
-      "_id": 0,
+      "Id": "$_id",
       "PatientName": {
         "$arrayElemAt": ["$name.text", 0]
       },
@@ -299,26 +299,24 @@ let projections = {
       }
     },
     "appointment": {
-      "_id": 0,
+      "Id": "$_id",
       "AppointmentId": {
         "$arrayElemAt": ["$identifier.value", 0]
       },
       "WorkingDate": {
-        "$arrayElemAt": ["$identifier.period.start", 1]
+        "$arrayElemAt": ["$identifier.period.start", 0]
       }
     },
     "location": {
-      "_id": 0,
+      "Id": "$_id",
       "LocationName": "$name",
       "Facility_Code": {
         "$arrayElemAt": ["$identifier.value", 0]
       }
     },
     "practitioner": {
-      "_id": 0,
-      "PractitionerName": {
-        "$arrayElemAt": ["$name.text", 0]
-      }
+      "Id": "$_id",
+      "PractitionerName": "$name.text"
     }
   },
   "LensUtilization": {
