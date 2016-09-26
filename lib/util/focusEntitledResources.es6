@@ -378,21 +378,30 @@ let projections = {
   },
   "ClaimErrorRate": {
     "patient": {
-      "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
+      "Id": "$_id",
+      "PatientName": {
+        "$arrayElemAt": ["$name.text", 0]
+      },
+      "Patient_Id": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      }
     },
-    "ClaimResponse": {
-      "ClaimId": "$identifier.value",
+    "claimresponse": {
+      "Id": "$_id",
+      "ClaimId": {
+        "$arrayElemAt": ["$identifier.value", 0]
+      },
       "ClaimEntryDate": "$created",
       "ClaimStatus": "$disposition"
-    },
-    "ProcedureRequest": {
+    }
+
+    /*  ,
+    "ProcedurseRequest": {
       "CPTCode": "$code.text"
     },
     "DiagnosticReport": {
       "ICDCode": "$codedDiagnosis.text"
-    }
+    }*/
   },
   "ClaimDeniedByPayer": {
     "patient": {
