@@ -1,438 +1,434 @@
 "use strict";
 
 let projections = {
-  "LossesByLocation": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "LossesByPayer": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "AverageWatingTime/Location": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "LasikConversionRate": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "CataractConversionRate": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "ExternalReferralsByPayer": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "ReferralMix": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "MissedDiabeticConsult-Ref.PQRS Measure19": {
-    "patient": {
-      "_id": 0,
-      "name": "$name.text",
-      "gender": 1,
-      "street": "$address.line",
-      "city": "$address.city",
-      "state": "$address.state"
-    },
-    "appointment": {
-      "_id": 0,
-      "value": "$identifier.value",
-      "status": "$status",
-      "description": "$description",
-      "text": "$reason.text"
-    },
-    "location": {
-      "_id": 0,
-      "LocationName": "$name"
-    },
-    "practitioner": {
-      "_id": 0
-    }
-  },
-  "OptometristProductivity": {
-    "patient": {
-      "Id": "$_id",
-      "PatientName": {
-        "$arrayElemAt": ["$name.text", 0]
+    "LossesByLocation": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
       },
-      "Patient_Id": {
-        "$arrayElemAt": ["$identifier.value", 0]
-      }
-    },
-    "appointment": {
-      "Id": "$_id",
-      "AppointmentId": {
-        "$arrayElemAt": ["$identifier.value", 0]
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
       },
-      "WorkingDate": {
-        "$arrayElemAt": ["$identifier.period.start", 0]
-      }
-    },
-    "location": {
-      "Id": "$_id",
-      "LocationName": "$name",
-      "Facility_Code": {
-        "$arrayElemAt": ["$identifier.value", 0]
-      }
-    },
-    "practitioner": {
-      "Id": "$_id",
-      "PractitionerName": {
-        "$arrayElemAt": ["$name.text", 0]
-      }
-    }
-  },
-  "TechnicianProductivity": {
-    "patient": {
-      "Id": "$_id",
-      "PatientName": {
-        "$arrayElemAt": ["$name.text", 0]
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
       },
-      "Patient_Id": {
-        "$arrayElemAt": ["$identifier.value", 0]
+      "practitioner": {
+        "_id": 0
       }
     },
-    "appointment": {
-      "Id": "$_id",
-      "AppointmentId": {
-        "$arrayElemAt": ["$identifier.value", 0]
+    "LossesByPayer": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
       },
-      "WorkingDate": {
-        "$arrayElemAt": ["$identifier.period.start", 0]
-      }
-    },
-    "location": {
-      "Id": "$_id",
-      "LocationName": "$name",
-      "Facility_Code": {
-        "$arrayElemAt": ["$identifier.value", 0]
-      }
-    },
-    "practitioner": {
-      "Id": "$_id",
-      "TechnicianName": "$name.text"
-    }
-  },
-  "CounsellorProductivity": {
-    "patient": {
-      "Id": "$_id",
-      "PatientName": {
-        "$arrayElemAt": ["$name.text", 0]
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
       },
-      "Patient_Id": {
-        "$arrayElemAt": ["$identifier.value", 0]
-      }
-    },
-    "appointment": {
-      "Id": "$_id",
-      "AppointmentId": {
-        "$arrayElemAt": ["$identifier.value", 0]
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
       },
-      "WorkingDate": {
-        "$arrayElemAt": ["$identifier.period.start", 0]
+      "practitioner": {
+        "_id": 0
       }
     },
-    "practitioner": {
-      "Id": "$_id",
-      "PractitionerName": "$name.text"
-    },
-    "procedurerequest": {
-      "Id": "$_id",
-      "WorkingDate": "$scheduledDateTime",
-      "VisitId": {
-        "$arrayElemAt": ["$identifier.value", 0]
-      }
-    }
-  },
-  "OpthalmologistProductivity": {
-    "patient": {
-      "Id": "$_id",
-      "PatientName": {
-        "$arrayElemAt": ["$name.text", 0]
+    "AverageWatingTime/Location": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
       },
-      "Patient_Id": {
-        "$arrayElemAt": ["$identifier.value", 0]
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
+      },
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
+      },
+      "practitioner": {
+        "_id": 0
       }
     },
-    "appointment": {
-      "Id": "$_id",
-      "AppointmentId": {
-        "$arrayElemAt": ["$identifier.value", 0]
+    "LasikConversionRate": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
       },
-      "WorkingDate": {
-        "$arrayElemAt": ["$identifier.period.start", 0]
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
+      },
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
+      },
+      "practitioner": {
+        "_id": 0
       }
     },
-    "location": {
-      "Id": "$_id",
-      "LocationName": "$name",
-      "Facility_Code": {
-        "$arrayElemAt": ["$identifier.value", 0]
+    "CataractConversionRate": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
+      },
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
+      },
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
+      },
+      "practitioner": {
+        "_id": 0
       }
     },
-    "practitioner": {
-      "Id": "$_id",
-      "PractitionerName": "$name.text"
-    }
-  },
-  "LensUtilization": {
-    "patient": {
-      "Id": "$_id",
-      "PatientName": {
-        "$arrayElemAt": ["$name.text", 0]
+    "ExternalReferralsByPayer": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
       },
-      "Patient_Id": {
-        "$arrayElemAt": ["$identifier.value", 0]
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
+      },
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
+      },
+      "practitioner": {
+        "_id": 0
       }
     },
-    "location": {
-      "Id": "$_id",
-      "LocationName": "$name",
-      "Facility_Code": {
-        "$arrayElemAt": ["$identifier.value", 0]
+    "ReferralMix": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
+      },
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
+      },
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
+      },
+      "practitioner": {
+        "_id": 0
       }
     },
-    "practitioner": {
-      "Id": "$_id",
-      "PractitionerName": "$name.text"
-    },
-    "device": {
-      "Id": "$_id",
-      "LensType": "$model",
-      "Eye": {
-        "$arrayElemAt": ["$note.text", 0]
+    "MissedDiabeticConsult-Ref.PQRS Measure19": {
+      "patient": {
+        "_id": 0,
+        "name": "$name.text",
+        "gender": 1,
+        "street": "$address.line",
+        "city": "$address.city",
+        "state": "$address.state"
       },
-      "SurgeryDate": "$manufactureDate"
-    }
-  },
-  "ORComplications": {
-    "patient": {
-      "Id": "$_id",
-      "PatientName": {
-        "$arrayElemAt": ["$name.text", 0]
+      "appointment": {
+        "_id": 0,
+        "value": "$identifier.value",
+        "status": "$status",
+        "description": "$description",
+        "text": "$reason.text"
       },
-      "Patient_DOB": "$birthDate"
-    },
-    "appointment": {
-      "Id": "$_id",
-      "AppointmentId": {
-        "$arrayElemAt": ["$identifier.value", 0]
+      "location": {
+        "_id": 0,
+        "LocationName": "$name"
       },
-      "Description": "$description"
+      "practitioner": {
+        "_id": 0
+      }
     },
-    "practitioner": {
-      "Id": "$_id",
-      "PractitionerName": "$name.text",
-      "Complications": "$comment"
-    }
+    "OptometristProductivity": {
+      "patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "WorkingDate": {
+          "$arrayElemAt": ["$identifier.period.start", 0]
+        }
+      },
+      "location": {
+        "Id": "$_id",
+        "LocationName": "$name",
+        "Facility_Code": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "practitioner": {
+        "Id": "$_id",
+        "PractitionerName": {
+          "$arrayElemAt": ["$name.text", 0]
+        }
+      }
+    },
+    "TechnicianProductivity": {
+      "patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "WorkingDate": {
+          "$arrayElemAt": ["$identifier.period.start", 0]
+        }
+      },
+      "location": {
+        "Id": "$_id",
+        "LocationName": "$name",
+        "Facility_Code": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "practitioner": {
+        "Id": "$_id",
+        "TechnicianName": "$name.text"
+      }
+    },
+    "CounsellorProductivity": {
+      "patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "WorkingDate": {
+          "$arrayElemAt": ["$identifier.period.start", 0]
+        }
+      },
+      "practitioner": {
+        "Id": "$_id",
+        "PractitionerName": "$name.text"
+      },
+      "procedurerequest": {
+        "Id": "$_id",
+        "WorkingDate": "$scheduledDateTime",
+        "VisitId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      }
+    },
+    "OpthalmologistProductivity": {
+      "patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "WorkingDate": {
+          "$arrayElemAt": ["$identifier.period.start", 0]
+        }
+      },
+      "location": {
+        "Id": "$_id",
+        "LocationName": "$name",
+        "Facility_Code": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "practitioner": {
+        "Id": "$_id",
+        "PractitionerName": "$name.text"
+      }
+    },
+    "LensUtilization": {
+      "patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "location": {
+        "Id": "$_id",
+        "LocationName": "$name",
+        "Facility_Code": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "practitioner": {
+        "Id": "$_id",
+        "PractitionerName": "$name.text"
+      },
+      "device": {
+        "Id": "$_id",
+        "LensType": "$model",
+        "Eye": {
+          "$arrayElemAt": ["$note.text", 0]
+        },
+        "SurgeryDate": "$manufactureDate"
+      }
+    },
+    "ORComplications": {
+      "patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_DOB": "$birthDate"
+      },
+      "appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "Description": "$description",
+        "AppointmentDate": {
+          "$arrayElemAt": ["$identifier.period.start", 0]
+        }
+      },
+      "practitioner": {
+        "Id": "$_id",
+        "PractitionerName": "$name.text",
+        "Complications": "$comment"
+      }
 
-    /* ,
-    "procedure": {
-      "Id": "$_id",
-      "ProcedureDate": "$performedDateTime"
-    }*/
-  },
-  "ClaimErrorRate": {
-    "patient": {
-      "Id": "$_id",
-      "PatientName": {
-        "$arrayElemAt": ["$name.text", 0]
+      /* ,
+       "procedure": {
+       "Id": "$_id",
+       "ProcedureDate": "$performedDateTime"
+       }*/
+    },
+    "ClaimErrorRate": {
+      "patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
       },
-      "Patient_Id": {
-        "$arrayElemAt": ["$identifier.value", 0]
+      "claimresponse": {
+        "Id": "$_id",
+        "ClaimId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "ClaimEntryDate": "$created",
+        "ClaimStatus": "$disposition",
+        "CPTCode": "$code.text",
+        "ICDCode": "$codedDiagnosis.text"
       }
     },
-    "claimresponse": {
-      "Id": "$_id",
-      "ClaimId": {
-        "$arrayElemAt": ["$identifier.value", 0]
+    "ClaimDeniedByPayer": {
+      "patient": {
+        "_id": 0,
+        "PatientName": "$name.text",
+        "Patient_Id": "$identifier.value"
       },
-      "ClaimEntryDate": "$created",
-      "ClaimStatus": "$disposition"
-    }
-
-    /*  ,
-    "ProcedurseRequest": {
-      "CPTCode": "$code.text"
+      "ClaimResponse": {
+        "ClaimId": "$identifier.value",
+        "ClaimEntryDate": "$created",
+        "ClaimStatus": "$disposition"
+      }
     },
-    "DiagnosticReport": {
-      "ICDCode": "$codedDiagnosis.text"
-    }*/
+    "OTReturns": {
+      "patient": {
+        "_id": 0,
+        "PatientName": "$name.text",
+        "Patient_Id": "$identifier.value"
+      },
+      "practitioner": {
+        "_id": 0,
+        "PractitionerName": "$name"
+      },
+      "Procedure": {
+        "ProcedureDate": "$performedDateTime"
+      }
+    },
+    "PostCataractVAI": {}
   },
-  "ClaimDeniedByPayer": {
-    "patient": {
-      "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
-    },
-    "ClaimResponse": {
-      "ClaimId": "$identifier.value",
-      "ClaimEntryDate": "$created",
-      "ClaimStatus": "$disposition"
-    }
-  },
-  "OTReturns": {
-    "patient": {
-      "_id": 0,
-      "PatientName": "$name.text",
-      "Patient_Id": "$identifier.value"
-    },
-    "practitioner": {
-      "_id": 0,
-      "PractitionerName": "$name"
-    },
-    "Procedure": {
-      "ProcedureDate": "$performedDateTime"
-    }
-  },
-  "PostCataractVAI": {}
-};
-
-  /* resources = {
+  resources = {
     "Procedurerequest": "ProcedureRequest",
     "Appointment": "Appointment",
     "Device": "Device",
@@ -443,9 +439,8 @@ let projections = {
     "Patient": "Patient",
     "Paymentreconciliation": "PaymentReconciliation",
     "Practitioner": "Practitioner",
-    "Procedure": "Procedure"
-  };*/
+    "Procedure": "Procedure",
+    "Claimresponse": "ClaimResponse"
+  };
 
-export default projections;
-
-/* export default resources;*/
+export {projections, resources};
