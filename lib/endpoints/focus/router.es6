@@ -4,7 +4,6 @@ import {getChFhirServiceInstance} from "ch-fhir-services";
 import {ServiceMapper} from "./ServiceMapper";
 import {ServiceMapperMaster} from "../../reusable/ServiceMapperMaster";
 import loggInstance from "../../util/FhirApiLogger";
-// import mwCheckFocusEntitlements from "../../middleware_services/mwCheckFocusEntitlements";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
