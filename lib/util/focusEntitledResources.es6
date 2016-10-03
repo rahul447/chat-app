@@ -2,7 +2,7 @@
 
 let projections = {
     "LossesByLocation": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -17,16 +17,16 @@ let projections = {
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "LossesByPayer": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -34,23 +34,23 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "AverageWatingTime/Location": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -58,23 +58,23 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "LasikConversionRate": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -82,23 +82,23 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "CataractConversionRate": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -106,23 +106,23 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "ExternalReferralsByPayer": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -130,23 +130,23 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "ReferralMix": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -154,23 +154,23 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "MissedDiabeticConsult-Ref.PQRS Measure19": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "name": "$name.text",
         "gender": 1,
@@ -178,23 +178,23 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
         "description": "$description",
         "text": "$reason.text"
       },
-      "location": {
+      "Location": {
         "_id": 0,
         "LocationName": "$name"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0
       }
     },
     "OptometristProductivity": {
-      "patient": {
+      "Patient": {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
@@ -203,7 +203,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "appointment": {
+      "Appointment": {
         "Id": "$_id",
         "AppointmentId": {
           "$arrayElemAt": ["$identifier.value", 0]
@@ -212,7 +212,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.period.start", 0]
         }
       },
-      "location": {
+      "Location": {
         "Id": "$_id",
         "LocationName": "$name",
         "Facility_Code": {
@@ -227,7 +227,7 @@ let projections = {
       }
     },
     "TechnicianProductivity": {
-      "patient": {
+      "Patient": {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
@@ -236,7 +236,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "appointment": {
+      "Appointment": {
         "Id": "$_id",
         "AppointmentId": {
           "$arrayElemAt": ["$identifier.value", 0]
@@ -245,20 +245,20 @@ let projections = {
           "$arrayElemAt": ["$identifier.period.start", 0]
         }
       },
-      "location": {
+      "Location": {
         "Id": "$_id",
         "LocationName": "$name",
         "Facility_Code": {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "practitioner": {
+      "Practitioner": {
         "Id": "$_id",
         "TechnicianName": "$name.text"
       }
     },
     "CounsellorProductivity": {
-      "patient": {
+      "Patient": {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
@@ -276,11 +276,11 @@ let projections = {
           "$arrayElemAt": ["$identifier.period.start", 0]
         }
       },
-      "practitioner": {
+      "Practitioner": {
         "Id": "$_id",
         "PractitionerName": "$name.text"
       },
-      "procedurerequest": {
+      "ProcedureRequest": {
         "Id": "$_id",
         "WorkingDate": "$scheduledDateTime",
         "VisitId": {
@@ -289,7 +289,7 @@ let projections = {
       }
     },
     "OpthalmologistProductivity": {
-      "patient": {
+      "Patient": {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
@@ -298,7 +298,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "appointment": {
+      "Appointment": {
         "Id": "$_id",
         "AppointmentId": {
           "$arrayElemAt": ["$identifier.value", 0]
@@ -307,20 +307,20 @@ let projections = {
           "$arrayElemAt": ["$identifier.period.start", 0]
         }
       },
-      "location": {
+      "Location": {
         "Id": "$_id",
         "LocationName": "$name",
         "Facility_Code": {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "practitioner": {
+      "Practitioner": {
         "Id": "$_id",
         "PractitionerName": "$name.text"
       }
     },
     "LensUtilization": {
-      "patient": {
+      "Patient": {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
@@ -329,18 +329,18 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "location": {
+      "Location": {
         "Id": "$_id",
         "LocationName": "$name",
         "Facility_Code": {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "practitioner": {
+      "Practitioner": {
         "Id": "$_id",
         "PractitionerName": "$name.text"
       },
-      "device": {
+      "Device": {
         "Id": "$_id",
         "LensType": "$model",
         "Eye": {
@@ -350,14 +350,14 @@ let projections = {
       }
     },
     "ORComplications": {
-      "patient": {
+      "Patient": {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
         },
         "Patient_DOB": "$birthDate"
       },
-      "appointment": {
+      "Appointment": {
         "Id": "$_id",
         "AppointmentId": {
           "$arrayElemAt": ["$identifier.value", 0]
@@ -367,7 +367,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.period.start", 0]
         }
       },
-      "practitioner": {
+      "Practitioner": {
         "Id": "$_id",
         "PractitionerName": "$name.text",
         "Complications": "$comment"
@@ -380,7 +380,7 @@ let projections = {
        }*/
     },
     "ClaimErrorRate": {
-      "patient": {
+      "Patient": {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
@@ -389,7 +389,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "claimresponse": {
+      "ClaimResponse": {
         "Id": "$_id",
         "ClaimId": {
           "$arrayElemAt": ["$identifier.value", 0]
@@ -401,7 +401,7 @@ let projections = {
       }
     },
     "ClaimDeniedByPayer": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "PatientName": "$name.text",
         "Patient_Id": "$identifier.value"
@@ -413,12 +413,12 @@ let projections = {
       }
     },
     "OTReturns": {
-      "patient": {
+      "Patient": {
         "_id": 0,
         "PatientName": "$name.text",
         "Patient_Id": "$identifier.value"
       },
-      "practitioner": {
+      "Practitioner": {
         "_id": 0,
         "PractitionerName": "$name"
       },
@@ -441,6 +441,10 @@ let projections = {
     "Practitioner": "Practitioner",
     "Procedure": "Procedure",
     "Claimresponse": "ClaimResponse"
-  };
+  },
+  focusResources = [
+    "Patient",
+    "Appointment"
+  ];
 
-export {projections, resources};
+export {projections, resources, focusResources};
