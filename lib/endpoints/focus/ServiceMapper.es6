@@ -34,7 +34,7 @@ export class ServiceMapper {
     }
     obj = {
       "id": data,
-      "projection": projections[req.body.MetricName],
+      "projection": projections[req.body.MetricName] || {},
       "service": this.serviceInstance,
       "res": res,
       "req": req,
