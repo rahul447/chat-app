@@ -10,7 +10,7 @@ let projections = {
         "city": "$address.city",
         "state": "$address.state"
       },
-      "appointment": {
+      "Appointment": {
         "_id": 0,
         "value": "$identifier.value",
         "status": "$status",
@@ -441,10 +441,6 @@ let projections = {
     "Practitioner": "Practitioner",
     "Procedure": "Procedure",
     "Claimresponse": "ClaimResponse"
-  },
-  focusResources = [
-    "Patient",
-    "Appointment"
-  ];
+  };
 
-export {projections, resources, focusResources};
+export {projections, resources};

@@ -1,7 +1,6 @@
 "use strict";
 
 import {projections} from "../../util/focusEntitledResources";
-import {resources} from "../../util/focusEntitledResources";
 import ApiError from "../../util/apiError";
 export class ServiceMapper {
 
@@ -27,10 +26,10 @@ export class ServiceMapper {
       projectionKey = keys[i].substring(0, keys[i].length - 3);
       projectionKey = projectionKey.toLowerCase();
       collectionName = projectionKey && projectionKey.charAt(0).toUpperCase() + projectionKey.substring(1);
-      if ( !(idArray[projectionIndex].length && projections[req.body.MetricName][resources[collectionName]])) {
+      if (!(idArray[projectionIndex].length && projections[req.body.MetricName][collectionName])) {
         return next(new ApiError(req.id, "Unauthorized", "Not Authorize to access requested resource", "", 401));
       }
-      data[resources[collectionName]] = idArray[projectionIndex];
+      data[collectionName] = idArray[projectionIndex];
     }
     obj = {
       "id": data,
