@@ -136,6 +136,18 @@ export class ServiceMapperMaster {
       .done();
   }
 
+  processRetrieveFocusResourceMulti(args) {
+    this.loggerInstance.info("=================processRetrieveFocusResource=================>", args);
+
+    this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
+    args.service.retrieveforFocusFourthLevel(args)
+      .then(msg => {
+        args.res.status(200).send(msg);
+      })
+      .catch(err => args.res.status(400).send({"error": err}))
+      .done();
+  }
+
   processRetrieveFocusResource(args) {
     this.loggerInstance.info("=================processRetrieveResource=================>");
     this.loggerInstance.info("reusable\\ServiceMapperMaster.es6:processRetrieveRequest");
