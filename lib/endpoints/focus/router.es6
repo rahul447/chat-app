@@ -28,6 +28,7 @@ let {NODE_ENV} = process.env,
 
 focusParamRoute
   .get(mwCheckFocusEntitlements)
+
   .get(serviceMapperInstance.retrieveResourceByIdentifier.bind(serviceMapperInstance));
 
 focusfhirRoute
