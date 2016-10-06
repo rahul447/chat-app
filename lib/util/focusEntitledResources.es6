@@ -441,7 +441,8 @@ let projections = {
         "Id": "$_id",
         "Facility_Code": {
           "$arrayElemAt": ["$identifier.value", 0]
-        }
+        },
+        "Location": "$name"
       },
       "Appointment": {
         "Id": "$_id",
@@ -450,8 +451,7 @@ let projections = {
         },
         "WorkingDate": {
           "$arrayElemAt": ["$identifier.period.start", 0]
-        },
-        "description": "$description"
+        }
       }
     }
   },
