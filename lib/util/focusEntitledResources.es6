@@ -426,7 +426,34 @@ let projections = {
         "ProcedureDate": "$performedDateTime"
       }
     },
-    "PostCataractVAI": {}
+    "PostCataractVAI": {},
+    "PatientTurnover": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "Location": {
+        "Id": "$_id",
+        "Facility_Code": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "Location": "$name"
+      },
+      "Appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "WorkingDate": {
+          "$arrayElemAt": ["$identifier.period.start", 0]
+        }
+      }
+    }
   },
   resources = {
     "Procedurerequest": "ProcedureRequest",
