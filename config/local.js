@@ -9,6 +9,7 @@ var environmentVariables = require("./environmentVariables"),
       "domain": "127.0.0.1",
       "port": 8050
     },
+    "appName": "ch-fhir-api",
     "nodeBridgeQueueCount": Number(environmentVariables.NODE_BRIDGE_QUEUE_COUNT),
     "rabbitMQ": {
       "url": environmentVariables.FHIR_RABBITMQ_URL,

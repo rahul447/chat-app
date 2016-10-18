@@ -25,6 +25,7 @@
     "body-parser": "^1.15.0",
     "ch-fhir-services": "^3.1.0",
     "ch-logger": "^2.3.0",
+    "ch-nodemailer": "^1.2.0",
     "deep": "0.0.2",
     "express": "^4.13.4",
     "express-domain-middleware": "^0.1.0",
