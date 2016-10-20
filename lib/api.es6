@@ -108,6 +108,8 @@ import queueRelay from "./endpoints/queueRelay/router";
 import ApiError from "./util/apiError";
 import domain from "express-domain-middleware";
 import focusRequest from "./endpoints/focus/router";
+import {MailerService} from "ch-nodemailer";
+import logger from "./util/FhirApiLogger";
 
 let {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
@@ -255,4 +257,8 @@ app.use(mwErrorHandler);
 // Starts the app
 app.listen(app.get("port"), function () {
   console.log(new Date(), "Server has started and is listening on port: " + app.get("port"));
+
+  MailerService.initializeMailerService(config, logger);
+
+  process.on("uncaughtException", MailerService.sendMailWhenProcessExit.bind(MailerService));
 });
