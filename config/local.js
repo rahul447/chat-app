@@ -60,6 +60,15 @@ var environmentVariables = require("./environmentVariables"),
         }
       ]
     },
+    "smtp": {
+      "host": "smtp.apptixemail.net",
+      "port": 587,
+      "to": "shaktim@cantahealth.com",
+      "auth": {
+        "user": "info@cantahealth.com",
+        "pass": "Access@1234"
+      }
+    },
     "authorization": {
       "authorize": false
     },
