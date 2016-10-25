@@ -30,7 +30,6 @@ export class ServiceMapper {
       if (!(idArray[projectionIndex].length && projections[req.body.MetricName][resources[collectionName]])) {
         return next(new ApiError(req.id, "Unauthorized", "Not Authorize to access requested resource", "", 401));
       }
-      console.log(resources[collectionName]);
       data[resources[collectionName]] = idArray[projectionIndex];
     }
 
