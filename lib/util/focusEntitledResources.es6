@@ -453,6 +453,21 @@ let projections = {
           "$arrayElemAt": ["$identifier.period.start", 0]
         }
       }
+    },
+    "TotalExamTime": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "Location": {
+        "Id": "$_id",
+        "LocationName": "$name"
+      }
     }
   },
   resources = {
