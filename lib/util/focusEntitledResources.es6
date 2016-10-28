@@ -510,7 +510,7 @@ let projections = {
     "Practitioner": "Practitioner",
     "Procedure": "Procedure",
     "Claimresponse": "ClaimResponse",
-    "Observation" :"Observation"
+    "Observation": "Observation"
   };
 
 export {projections, resources};
