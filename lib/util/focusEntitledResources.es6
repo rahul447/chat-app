@@ -426,7 +426,34 @@ let projections = {
         "ProcedureDate": "$performedDateTime"
       }
     },
-    "PostCataractVAI": {},
+    "PostCataractVAI": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "Practitioner": {
+        "Id": "$_id",
+        "PractitionerName": "$name.text"
+      },
+      "Observation": {
+        "Id": "$_id",
+        "postVisitDate": "$effectiveDateTime",
+        "vision": "$valueString",
+        "code": {
+          "$arrayElemAt": ["$code.coding.code", 0]
+        }
+      },
+      "Procedure": {
+        "Id": "$_id",
+        "surgeryDate": "$performedDateTime"
+
+      }
+    },
     "PatientTurnover": {
       "Patient": {
         "Id": "$_id",
@@ -482,7 +509,8 @@ let projections = {
     "Paymentreconciliation": "PaymentReconciliation",
     "Practitioner": "Practitioner",
     "Procedure": "Procedure",
-    "Claimresponse": "ClaimResponse"
+    "Claimresponse": "ClaimResponse",
+    "Observation": "Observation"
   };
 
 export {projections, resources};
