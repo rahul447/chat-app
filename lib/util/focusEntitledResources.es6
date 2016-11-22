@@ -219,7 +219,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "practitioner": {
+      "Practitioner": {
         "Id": "$_id",
         "PractitionerName": {
           "$arrayElemAt": ["$name.text", 0]
