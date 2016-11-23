@@ -219,7 +219,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "practitioner": {
+      "Practitioner": {
         "Id": "$_id",
         "PractitionerName": {
           "$arrayElemAt": ["$name.text", 0]
@@ -412,17 +412,25 @@ let projections = {
         "ClaimStatus": "$disposition"
       }
     },
-    "OTReturns": {
+    "OTReturn": {
       "Patient": {
+        "Id": "$_id",
         "_id": 0,
-        "PatientName": "$name.text",
-        "Patient_Id": "$identifier.value"
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
       },
       "Practitioner": {
+        "Id": "$_id",
         "_id": 0,
-        "PractitionerName": "$name"
+        "PractitionerName": "$name.text"
       },
       "Procedure": {
+        "Id": "$_id",
+        "_id": 0,
         "ProcedureDate": "$performedDateTime"
       }
     },
@@ -494,6 +502,19 @@ let projections = {
       "Location": {
         "Id": "$_id",
         "LocationName": "$name"
+      }
+    },
+    "DelayedDischarges": {
+      "Appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "AppointmentDate": {
+          "$arrayElemAt": ["$identifier.period.start", 0]
+        },
+        "EnterDate": "$start",
+        "LeaveDate": "$end"
       }
     }
   },
