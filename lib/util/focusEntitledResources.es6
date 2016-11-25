@@ -267,22 +267,13 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         }
       },
-      "Appointment": {
-        "Id": "$_id",
-        "AppointmentId": {
-          "$arrayElemAt": ["$identifier.value", 0]
-        },
-        "WorkingDate": {
-          "$arrayElemAt": ["$identifier.period.start", 0]
-        }
-      },
       "Practitioner": {
         "Id": "$_id",
         "PractitionerName": "$name.text"
       },
       "ProcedureRequest": {
         "Id": "$_id",
-        "WorkingDate": "$scheduledDateTime",
+        "ScheduledDate": "$scheduledDateTime",
         "VisitId": {
           "$arrayElemAt": ["$identifier.value", 0]
         }
