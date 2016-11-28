@@ -221,9 +221,7 @@ let projections = {
       },
       "Practitioner": {
         "Id": "$_id",
-        "PractitionerName": {
-          "$arrayElemAt": ["$name.text", 0]
-        }
+        "PractitionerName": "$name.text"
       }
     },
     "TechnicianProductivity": {
