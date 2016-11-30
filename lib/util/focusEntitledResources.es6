@@ -496,6 +496,15 @@ let projections = {
       }
     },
     "DelayedDischarges": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
       "Appointment": {
         "Id": "$_id",
         "AppointmentId": {
@@ -504,8 +513,8 @@ let projections = {
         "AppointmentDate": {
           "$arrayElemAt": ["$identifier.period.start", 0]
         },
-        "EnterDate": "$start",
-        "LeaveDate": "$end"
+        "EnterTime": "$start",
+        "LeaveTime": "$end"
       }
     },
     "OpticNerveEvaluation": {
