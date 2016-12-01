@@ -75,50 +75,52 @@ let projections = {
     },
     "LasikConversionRate": {
       "Patient": {
-        "_id": 0,
-        "name": "$name.text",
-        "gender": 1,
-        "street": "$address.line",
-        "city": "$address.city",
-        "state": "$address.state"
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "street": {
+          "$arrayElemAt": [
+            {
+              "$arrayElemAt": ["$address.line", 0]
+            }, 0]
+        },
+        "city": {
+          "$arrayElemAt": ["$address.city", 0]
+        },
+        "state": {
+          "$arrayElemAt": ["$address.state", 0]
+        }
       },
-      "Appointment": {
+      "Procedure": {
+        "Id": "$_id",
         "_id": 0,
-        "value": "$identifier.value",
-        "status": "$status",
-        "description": "$description",
-        "text": "$reason.text"
-      },
-      "Location": {
-        "_id": 0,
-        "LocationName": "$name"
-      },
-      "Practitioner": {
-        "_id": 0
+        "ProcedureDate": "$performedDateTime"
       }
     },
     "CataractConversionRate": {
       "Patient": {
-        "_id": 0,
-        "name": "$name.text",
-        "gender": 1,
-        "street": "$address.line",
-        "city": "$address.city",
-        "state": "$address.state"
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "street": {
+          "$arrayElemAt": [
+            {
+              "$arrayElemAt": ["$address.line", 0]
+            }, 0]
+        },
+        "city": {
+          "$arrayElemAt": ["$address.city", 0]
+        },
+        "state": {
+          "$arrayElemAt": ["$address.state", 0]
+        }
       },
-      "Appointment": {
+      "Procedure": {
+        "Id": "$_id",
         "_id": 0,
-        "value": "$identifier.value",
-        "status": "$status",
-        "description": "$description",
-        "text": "$reason.text"
-      },
-      "Location": {
-        "_id": 0,
-        "LocationName": "$name"
-      },
-      "Practitioner": {
-        "_id": 0
+        "ProcedureDate": "$performedDateTime"
       }
     },
     "ExternalReferralsByPayer": {
@@ -390,15 +392,13 @@ let projections = {
       }
     },
     "ClaimDeniedByPayer": {
-      "Patient": {
-        "_id": 0,
-        "PatientName": "$name.text",
-        "Patient_Id": "$identifier.value"
-      },
       "ClaimResponse": {
-        "ClaimId": "$identifier.value",
+        "Id": "$_id",
+        "ClaimId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
         "ClaimEntryDate": "$created",
-        "ClaimStatus": "$disposition"
+        "ClaimStatus": "$outcome"
       }
     },
     "OTReturn": {
@@ -494,6 +494,15 @@ let projections = {
       }
     },
     "DelayedDischarges": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
       "Appointment": {
         "Id": "$_id",
         "AppointmentId": {
@@ -502,8 +511,33 @@ let projections = {
         "AppointmentDate": {
           "$arrayElemAt": ["$identifier.period.start", 0]
         },
-        "EnterDate": "$start",
-        "LeaveDate": "$end"
+        "EnterTime": "$start",
+        "LeaveTime": "$end"
+      }
+    },
+    "OpticNerveEvaluation": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "Practitioner": {
+        "Id": "$_id",
+        "PractitionerName": "$name.text"
+      },
+      "Procedure": {
+        "Id": "$_id",
+        "ProcedureDate": "$performedDateTime"
+      },
+      "DiagnosticReport": {
+        "Id": "$_id",
+        "CPT Code": {
+          "$arrayElemAt": ["$codedDiagnosis.text", 0]
+        }
       }
     }
   },
