@@ -392,15 +392,13 @@ let projections = {
       }
     },
     "ClaimDeniedByPayer": {
-      "Patient": {
-        "_id": 0,
-        "PatientName": "$name.text",
-        "Patient_Id": "$identifier.value"
-      },
       "ClaimResponse": {
-        "ClaimId": "$identifier.value",
+        "Id": "$_id",
+        "ClaimId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
         "ClaimEntryDate": "$created",
-        "ClaimStatus": "$disposition"
+        "ClaimStatus": "$outcome"
       }
     },
     "OTReturn": {
