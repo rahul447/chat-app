@@ -448,7 +448,7 @@ let projections = {
       },
       "Observation": {
         "Id": "$_id",
-        "postVisitDate": "$effectiveDateTime",
+        "visitDate": "$effectiveDateTime",
         "vision": "$valueString",
         "code": {
           "$arrayElemAt": ["$code.coding.code", 0]
