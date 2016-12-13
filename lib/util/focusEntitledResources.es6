@@ -518,7 +518,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         },
         "AppointmentDate": {
-          "$arrayElemAt": ["$identifier.period.start", 0]
+          "$arrayElemAt": ["$start", 0]
         },
         "EnterTime": "$start",
         "LeaveTime": "$end"
