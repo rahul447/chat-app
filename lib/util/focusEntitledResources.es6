@@ -483,7 +483,7 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         },
         "WorkingDate": {
-          "$arrayElemAt": ["$identifier.period.start", 0]
+          "$arrayElemAt": ["$start", 0]
         }
       }
     },
