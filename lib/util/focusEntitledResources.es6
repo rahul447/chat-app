@@ -517,9 +517,7 @@ let projections = {
         "AppointmentId": {
           "$arrayElemAt": ["$identifier.value", 0]
         },
-        "AppointmentDate": {
-          "$arrayElemAt": ["$start", 0]
-        },
+        "AppointmentDate": "$start",
         "EnterTime": "$start",
         "LeaveTime": "$end"
       }
