@@ -482,9 +482,7 @@ let projections = {
         "AppointmentId": {
           "$arrayElemAt": ["$identifier.value", 0]
         },
-        "WorkingDate": {
-          "$arrayElemAt": ["$start", 0]
-        }
+        "WorkingDate": "$start"
       }
     },
     "TotalExamTime": {
