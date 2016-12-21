@@ -76,6 +76,10 @@ let projections = {
     "LasikConversionRate": {
       "Patient": {
         "Id": "$_id",
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "Patient_DOB": "$birthDate",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
         },
@@ -90,6 +94,10 @@ let projections = {
     "CataractConversionRate": {
       "Patient": {
         "Id": "$_id",
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "Patient_DOB": "$birthDate",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
         },
