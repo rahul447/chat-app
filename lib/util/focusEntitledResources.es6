@@ -91,11 +91,6 @@ let projections = {
         "state": {
           "$arrayElemAt": ["$address.state", 0]
         }
-      },
-      "Procedure": {
-        "Id": "$_id",
-        "_id": 0,
-        "ProcedureDate": "$performedDateTime"
       }
     },
     "CataractConversionRate": {
@@ -116,11 +111,6 @@ let projections = {
         "state": {
           "$arrayElemAt": ["$address.state", 0]
         }
-      },
-      "Procedure": {
-        "Id": "$_id",
-        "_id": 0,
-        "ProcedureDate": "$performedDateTime"
       }
     },
     "ExternalReferralsByPayer": {
