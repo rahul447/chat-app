@@ -518,7 +518,7 @@ let projections = {
       },
       "DiagnosticReport": {
         "Id": "$_id",
-        "CPT Code": {
+        "ICD Code": {
           "$arrayElemAt": ["$codedDiagnosis.text", 0]
         }
       }
