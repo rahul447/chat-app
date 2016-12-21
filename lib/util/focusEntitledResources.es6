@@ -79,12 +79,6 @@ let projections = {
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
         },
-        "street": {
-          "$arrayElemAt": [
-            {
-              "$arrayElemAt": ["$address.line", 0]
-            }, 0]
-        },
         "city": {
           "$arrayElemAt": ["$address.city", 0]
         },
@@ -98,12 +92,6 @@ let projections = {
         "Id": "$_id",
         "PatientName": {
           "$arrayElemAt": ["$name.text", 0]
-        },
-        "street": {
-          "$arrayElemAt": [
-            {
-              "$arrayElemAt": ["$address.line", 0]
-            }, 0]
         },
         "city": {
           "$arrayElemAt": ["$address.city", 0]
