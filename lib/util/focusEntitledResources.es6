@@ -530,6 +530,30 @@ let projections = {
           "$arrayElemAt": ["$codedDiagnosis.text", 0]
         }
       }
+    },
+    "IOPTraker": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientName": {
+          "$arrayElemAt": ["$name.text", 0]
+        },
+        "Patient_Id": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "Practitioner": {
+        "Id": "$_id",
+        "PractitionerName": "$name.text"
+      },
+      "Observation": {
+        "Id": "$_id",
+        "TargetIOPOD": "$valueString",
+        "TargetIOPOS": "$valueString"
+      },
+      "Procedure": {
+        "Id": "$_id",
+        "Date": "$performedDateTime"
+      }
     }
   },
   resources = {
