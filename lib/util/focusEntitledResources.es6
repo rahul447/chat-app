@@ -469,6 +469,11 @@ let projections = {
           "$arrayElemAt": ["$identifier.value", 0]
         },
         "WorkingDate": "$start"
+      },
+      "Practitioner": {
+        "Id": "$_id",
+        "_id": 0,
+        "PractitionerName": "$name.text"
       }
     },
     "TotalExamTime": {
