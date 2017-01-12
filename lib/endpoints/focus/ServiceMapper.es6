@@ -27,6 +27,9 @@ export class ServiceMapper {
       projectionKey = keys[i].substring(0, keys[i].length - 3);
       projectionKey = projectionKey.toLowerCase();
       collectionName = projectionKey && projectionKey.charAt(0).toUpperCase() + projectionKey.substring(1);
+      if (!idArray[projectionIndex]) {
+        return next(new ApiError("", "Unauthorized", "Data is not available", "", 403));
+      }
       if (!(idArray[projectionIndex].length && projections[req.body.MetricName][resources[collectionName]])) {
         return next(new ApiError(req.id, "Unauthorized", "Not Authorize to access requested resource", "", 401));
       }
