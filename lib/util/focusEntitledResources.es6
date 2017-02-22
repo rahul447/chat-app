@@ -558,7 +558,7 @@ let projections = {
         "Date": "$performedDateTime"
       }
     },
-    "BookedVsBlocked": {
+    "BookedvsBlocked": {
       "Patient": {
         "Id": "$_id",
         "PatientId": {
