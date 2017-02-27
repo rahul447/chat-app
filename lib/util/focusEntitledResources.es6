@@ -280,9 +280,7 @@ let projections = {
         "AppointmentId": {
           "$arrayElemAt": ["$identifier.value", 0]
         },
-        "WorkingDate": {
-          "$arrayElemAt": ["$identifier.period.start", 0]
-        }
+        "WorkingDate": "$start"
       },
       "Location": {
         "Id": "$_id",
@@ -558,6 +556,21 @@ let projections = {
       "Procedure": {
         "Id": "$_id",
         "Date": "$performedDateTime"
+      }
+    },
+    "BookedvsBlocked": {
+      "Patient": {
+        "Id": "$_id",
+        "PatientId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        }
+      },
+      "Appointment": {
+        "Id": "$_id",
+        "AppointmentId": {
+          "$arrayElemAt": ["$identifier.value", 0]
+        },
+        "Date": "$start"
       }
     }
   },
