@@ -4,6 +4,24 @@ module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    "copy": {
+      "dist": {
+        "files" :[{
+          "cwd": 'lib/views/',
+          "src": ["*.html"],
+          "dest": 'dist/views/',
+          "expand": true,
+          "ext": ".html"
+          },{
+          "cwd": 'lib/public/stylesheets/',
+          "src": ["*.css"],
+          "dest": 'dist/public/stylesheets/',
+          "expand": true,
+          "ext": ".css"
+          }
+        ]
+      }
+    },
     "babel": {
       "options": {
         "sourceMap": true,
@@ -76,6 +94,7 @@ module.exports = function (grunt) {
   // grunt.loadNpmTasks("grunt-mocha-test");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-jscs");
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
   grunt.registerTask("default", [
@@ -86,9 +105,10 @@ module.exports = function (grunt) {
   // Common build task
   grunt.registerTask("buildCommon", [
     "clean",
+    "copy",
     "babel",
-    "eslint",
-    "jscs"
+    //"eslint",
+    //"jscs"
   ]);
 
   // Common test task
